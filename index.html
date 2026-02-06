@@ -8,7 +8,7 @@
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- Google Fonts -->
+    <!-- Google Fonts with Swap & Preconnect -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&family=Titan+One&display=swap" rel="stylesheet">
@@ -16,13 +16,14 @@
     <style>
         /* --- Color Palette --- */
         :root {
-            --blue-bg: #4FC3F7; /* Flat Blue */
+            --blue-bg: #4FC3F7; 
             --pink-accent: #E91E63;
             --pink-hover: #D81B60;
             --bokeh-color: #FFFFFF;
             --dough-color: #F8BBD0;
         }
 
+        /* Prevent unstyled font flash by hiding main content initially */
         body {
             background-color: var(--blue-bg);
             font-family: 'Fredoka', sans-serif;
@@ -33,36 +34,37 @@
             flex-direction: column;
             color: white;
             cursor: default;
-            perspective: 1000px; /* Enable 3D space for sprinkles */
+            perspective: 1000px;
+        }
+
+        #main-content {
+            opacity: 0;
+            transition: opacity 0.5s ease-in;
         }
 
         /* --- Background Wavy Pattern --- */
         .wavy-bg {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -4; /* Push back behind sprinkles */
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: -4;
             background-image: url("data:image/svg+xml,%3Csvg width='100' height='40' viewBox='0 0 100 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 20 Q 25 5 50 20 T 100 20' fill='none' stroke='white' stroke-opacity='0.25' stroke-width='2'/%3E%3C/svg%3E");
             background-size: 80px 40px;
             background-repeat: repeat;
             animation: waveFlow 4s linear infinite;
         }
 
-        /* --- Dynamic Sprinkles (Added) --- */
+        /* --- Dynamic Sprinkles --- */
         .sprinkle-container {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            z-index: -3; /* In front of waves, behind content */
+            z-index: -3;
             pointer-events: none;
             overflow: hidden;
         }
 
         .bg-sprinkle {
             position: absolute;
-            width: 12px;
-            height: 4px;
+            width: 12px; height: 4px;
             border-radius: 4px;
             opacity: 0.8;
             animation: floatSprinkle linear infinite;
@@ -133,9 +135,7 @@
         .pop-text {
             position: relative;
             z-index: 10;
-            text-shadow: 
-                3px 3px 0px #000, 
-                6px 6px 0px rgba(0,0,0,0.2);
+            text-shadow: 3px 3px 0px #000, 6px 6px 0px rgba(0,0,0,0.2);
             -webkit-text-stroke: 2px black;
             filter: drop-shadow(0px 10px 10px rgba(0,0,0,0.3));
             transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -146,18 +146,10 @@
         .text-doughnuts { color: var(--pink-accent); }
 
         @media (max-width: 768px) {
-            .cartoon-text-sm { 
-                -webkit-text-stroke: 4px black;
-                text-shadow: 2px 2px 0px #000000;
-            }
+            .cartoon-text-sm { -webkit-text-stroke: 4px black; text-shadow: 2px 2px 0px #000000; }
         }
         @media (min-width: 768px) {
-            .pop-text {
-                -webkit-text-stroke: 3px black;
-                text-shadow: 
-                    5px 5px 0px #000, 
-                    10px 10px 0px rgba(0,0,0,0.2);
-            }
+            .pop-text { -webkit-text-stroke: 3px black; text-shadow: 5px 5px 0px #000, 10px 10px 0px rgba(0,0,0,0.2); }
         }
 
         .pop-text:hover { transform: scale(1.05) translateY(-5px); }
@@ -184,7 +176,8 @@
         .anim-pulse { animation: pulse-heart 4s ease-in-out infinite; transform-origin: center; }
         .animate-logo { animation: logoBob 5s ease-in-out infinite; }
 
-        .entrance-pop {
+        /* Content initially hidden, class added by JS */
+        .ready .entrance-pop {
             opacity: 0;
             transform: scale(0.8) translateY(50px);
             animation: elasticEntrance 1.2s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
@@ -200,12 +193,9 @@
         /* --- Sugar Dust Trail --- */
         .sugar-particle {
             position: absolute;
-            width: 6px; height: 6px; 
-            background: white;
-            border-radius: 2px;
-            pointer-events: none;
-            z-index: 9999; 
-            box-shadow: 0 0 8px rgba(255,255,255,1);
+            width: 6px; height: 6px; background: white;
+            border-radius: 2px; pointer-events: none;
+            z-index: 9999; box-shadow: 0 0 8px rgba(255,255,255,1);
             animation: fallFade 1.5s linear forwards;
         }
         @keyframes fallFade {
@@ -213,70 +203,56 @@
             100% { transform: translate(20px, 80px) rotate(180deg) scale(0); opacity: 0; }
         }
 
-        /* --- Physics Steam Canvas (Updated Position) --- */
         #steam-canvas {
             position: absolute;
-            /* Position bottom of canvas slightly above the visual top of the text */
-            bottom: 25%; 
-            left: 50%;
+            bottom: 25%; left: 50%;
             transform: translateX(-50%);
             pointer-events: none;
             z-index: 5;
         }
 
-        /* --- Pink Email Button --- */
         .pink-email-btn {
-            background-color: var(--pink-accent);
-            color: white;
-            border: 4px solid white;
-            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            white-space: nowrap;
-            box-shadow: 0 10px 20px rgba(233, 30, 99, 0.4);
-            position: relative;
-            overflow: hidden; 
+            background-color: var(--pink-accent); color: white;
+            border: 4px solid white; transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            white-space: nowrap; box-shadow: 0 10px 20px rgba(233, 30, 99, 0.4);
+            position: relative; overflow: hidden; 
         }
         
         .pink-email-btn::after {
-            content: '';
-            position: absolute;
+            content: ''; position: absolute;
             top: 0; left: -100%; width: 50%; height: 100%;
             background: linear-gradient(to right, transparent, rgba(255,255,255,0.4), transparent);
-            transform: skewX(-20deg);
-            animation: shimmerSweep 4s infinite ease-in-out;
+            transform: skewX(-20deg); animation: shimmerSweep 4s infinite ease-in-out;
             pointer-events: none;
         }
         
         @keyframes shimmerSweep {
-            0% { left: -100%; }
-            20% { left: 200%; }
-            100% { left: 200%; }
+            0% { left: -100%; } 20% { left: 200%; } 100% { left: 200%; }
         }
         
-        .pink-email-btn:hover {
-            background-color: var(--pink-hover);
-            transform: scale(1.05) translateY(-2px);
-        }
+        .pink-email-btn:hover { background-color: var(--pink-hover); transform: scale(1.05) translateY(-2px); }
 
     </style>
 </head>
 <body>
 
-    <!-- Background Layers -->
+    <!-- Background Layers (Always Visible) -->
     <div class="wavy-bg"></div>
-    <div class="sprinkle-container" id="sprinkle-bg"></div> <!-- Sprinkles Added Here -->
+    <div class="sprinkle-container" id="sprinkle-bg"></div>
     <div class="top-glow"></div>
     <div class="vignette"></div>
     <div class="bokeh-container" id="bokeh-bg"></div>
 
-    <!-- Main Content -->
-    <main class="w-full h-full flex flex-col items-center justify-center p-4 relative z-10">
+    <!-- Main Content (Hidden until Fonts Ready) -->
+    <main id="main-content" class="w-full h-full flex flex-col items-center justify-center p-4 relative z-10">
         
         <!-- Logo Section -->
         <div class="entrance-pop flex flex-col items-center mb-6 md:mb-10 animate-logo">
             <div class="inline-block cursor-pointer mb-2 transform hover:scale-105 transition duration-300">
-                <img src="images/logo.png" 
+                <img src="https://via.placeholder.com/150/E91E63/FFFFFF?text=Doughnut" 
                      alt="The Mini Doughnut Company" 
-                     class="w-32 h-32 md:w-48 md:h-48 object-contain rounded-full relative z-10">
+                     class="w-32 h-32 md:w-48 md:h-48 object-contain rounded-full relative z-10"
+                     onerror="this.src='https://img.icons8.com/emoji/160/000000/doughnut-emoji.png'">
             </div>
             <h2 class="font-bubbly text-2xl md:text-3xl mt-4 text-white text-center leading-none cartoon-text-sm">
                 The Mini Doughnut Company
@@ -286,7 +262,6 @@
         <!-- Hero Text Stack -->
         <div class="flex flex-col items-center justify-center relative select-none">
             
-            <!-- HOT (Steam Updated) -->
             <div class="relative entrance-pop delay-100 anim-float">
                 <canvas id="steam-canvas" width="300" height="400"></canvas>
                 <h1 class="font-bubbly text-6xl sm:text-7xl md:text-9xl pop-text text-hot transform -rotate-3 leading-none">
@@ -294,14 +269,12 @@
                 </h1>
             </div>
 
-            <!-- FRESH -->
             <div class="entrance-pop delay-200 anim-float-delayed relative -mt-2 md:-mt-4">
                 <h1 class="font-bubbly text-6xl sm:text-7xl md:text-9xl pop-text text-fresh transform rotate-2 leading-none">
                     FRESH
                 </h1>
             </div>
 
-            <!-- DOUGHNUTS -->
             <div class="entrance-pop delay-300 relative -mt-2 md:-mt-4">
                 <h1 class="font-bubbly text-5xl sm:text-7xl md:text-9xl pop-text text-doughnuts anim-pulse leading-none">
                     DOUGHNUTS!
@@ -312,7 +285,7 @@
 
         <!-- CTA Section -->
         <div class="mt-10 md:mt-16 entrance-pop delay-300 flex flex-col items-center">
-            <a href="mailto:info@theminidoughnutcompany.com" 
+            <a href="mailto:hello@theminidoughnutcompany.com" 
                class="pink-email-btn px-6 py-3 md:px-10 md:py-5 text-base sm:text-lg md:text-2xl font-bold rounded-full inline-flex items-center">
                 <span class="mr-2 text-xl md:text-2xl">📧</span>
                 <span class="truncate">hello@theminidoughnutcompany.com</span>
@@ -327,11 +300,32 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+            // Initializing background visualizers immediately
             createBokeh();
+            initBackgroundSprinkles();
+
+            // Handle Font Loading to prevent "Ugly Flash"
+            if ('fonts' in document) {
+                document.fonts.ready.then(() => {
+                    revealContent();
+                }).catch(() => {
+                    // Fallback if fonts fail
+                    revealContent();
+                });
+            } else {
+                // Legacy browser fallback
+                setTimeout(revealContent, 500);
+            }
+
             initSugarTrail();
             initSteamPhysics();
-            initBackgroundSprinkles();
         });
+
+        function revealContent() {
+            const main = document.getElementById('main-content');
+            main.style.opacity = '1';
+            document.body.classList.add('ready');
+        }
 
         // --- 1. Physics-Based Steam Engine ---
         function initSteamPhysics() {
@@ -348,7 +342,6 @@
 
             class Particle {
                 constructor() {
-                    // Start particles from bottom of canvas
                     this.x = canvas.width / 2 + (Math.random() - 0.5) * 120;
                     this.y = canvas.height - 20; 
                     this.vx = (Math.random() - 0.5) * 0.5;
@@ -398,7 +391,7 @@
             animate();
         }
 
-        // --- 2. Dynamic Sprinkles (Re-added) ---
+        // --- 2. Dynamic Sprinkles ---
         function initBackgroundSprinkles() {
             const container = document.getElementById('sprinkle-bg');
             const colors = ['#FFEB3B', '#FF4081', '#FFFFFF', '#00E676', '#BA68C8'];
@@ -407,14 +400,12 @@
             for (let i = 0; i < count; i++) {
                 const el = document.createElement('div');
                 el.classList.add('bg-sprinkle');
-                
-                // Random properties
                 const bg = colors[Math.floor(Math.random() * colors.length)];
                 const left = Math.random() * 100;
-                const duration = Math.random() * 10 + 10; // 10-20s float time
-                const delay = Math.random() * -20; // Start immediately at random cycle point
-                const scale = Math.random() * 0.5 + 0.5; // Size variation
-                const blur = Math.random() * 2; // Depth of field
+                const duration = Math.random() * 10 + 10;
+                const delay = Math.random() * -20;
+                const scale = Math.random() * 0.5 + 0.5;
+                const blur = Math.random() * 2;
 
                 el.style.backgroundColor = bg;
                 el.style.left = `${left}%`;
@@ -422,7 +413,6 @@
                 el.style.animationDelay = `${delay}s`;
                 el.style.transform = `scale(${scale})`;
                 el.style.filter = `blur(${blur}px)`;
-                
                 container.appendChild(el);
             }
         }
@@ -452,19 +442,15 @@
                 if (throttle % 4 !== 0) return; 
                 const particle = document.createElement('div');
                 particle.classList.add('sugar-particle');
-                
                 const offsetX = x + (Math.random() - 0.5) * 20;
                 const offsetY = y + (Math.random() - 0.5) * 20;
-
                 particle.style.left = `${offsetX}px`; 
                 particle.style.top = `${offsetY}px`;
                 document.body.appendChild(particle);
                 setTimeout(() => particle.remove(), 1500);
             };
 
-            document.addEventListener('mousemove', (e) => {
-                spawnSugar(e.clientX, e.clientY);
-            });
+            document.addEventListener('mousemove', (e) => spawnSugar(e.clientX, e.clientY));
             document.addEventListener('touchmove', (e) => {
                 const touch = e.touches[0];
                 spawnSugar(touch.clientX, touch.clientY);
