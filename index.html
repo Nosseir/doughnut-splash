@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>The Mini Doughnut Company - Hot & Fresh</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&family=Titan+One&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- Color Palette --- */
+        :root {
+            --blue-bg: #4FC3F7; /* Flat Blue */
+            --pink-accent: #E91E63;
+            --pink-hover: #D81B60;
+            --bokeh-color: #FFFFFF;
+            --dough-color: #F8BBD0;
+        }
+
+        body {
+            background-color: var(--blue-bg);
+            font-family: 'Fredoka', sans-serif;
+            overflow: hidden;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            color: white;
+            cursor: default;
+            perspective: 1000px; /* Enable 3D space for sprinkles */
+        }
+
+        /* --- Background Wavy Pattern --- */
+        .wavy-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -4; /* Push back behind sprinkles */
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='40' viewBox='0 0 100 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 20 Q 25 5 50 20 T 100 20' fill='none' stroke='white' stroke-opacity='0.25' stroke-width='2'/%3E%3C/svg%3E");
+            background-size: 80px 40px;
+            background-repeat: repeat;
+            animation: waveFlow 4s linear infinite;
+        }
+
+        /* --- Dynamic Sprinkles (Added) --- */
+        .sprinkle-container {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: -3; /* In front of waves, behind content */
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .bg-sprinkle {
+            position: absolute;
+            width: 12px;
+            height: 4px;
+            border-radius: 4px;
+            opacity: 0.8;
+            animation: floatSprinkle linear infinite;
+        }
+
+        @keyframes floatSprinkle {
+            0% { transform: translateY(110vh) rotate(0deg) translateZ(0); opacity: 0; }
+            10% { opacity: 0.8; }
+            90% { opacity: 0.8; }
+            100% { transform: translateY(-10vh) rotate(360deg) translateZ(50px); opacity: 0; }
+        }
+
+        .top-glow {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 300px;
+            background: linear-gradient(to bottom, rgba(255,255,255,0.4) 0%, transparent 100%);
+            z-index: -2;
+            pointer-events: none;
+        }
+
+        .vignette {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at center, transparent 30%, rgba(0,0,0,0.15) 100%);
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .bokeh-container {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: -2;
+            pointer-events: none;
+            overflow: hidden;
+        }
+        
+        .bokeh-orb {
+            position: absolute;
+            background: var(--bokeh-color);
+            border-radius: 50%;
+            filter: blur(10px);
+            opacity: 0;
+            animation: breatheFloat 8s infinite ease-in-out;
+        }
+
+        @keyframes waveFlow {
+            0% { background-position: 0 0; }
+            100% { background-position: -80px 0; }
+        }
+
+        @keyframes breatheFloat {
+            0% { transform: translateY(0) scale(0.8); opacity: 0; }
+            50% { opacity: 0.3; }
+            100% { transform: translateY(-100px) scale(1.2); opacity: 0; }
+        }
+
+        /* --- Typography Effects --- */
+        .font-bubbly { font-family: 'Titan One', cursive; }
+
+        .cartoon-text-sm {
+            -webkit-text-stroke: 6px black;
+            paint-order: stroke fill;
+            text-shadow: 4px 4px 0px rgba(0,0,0,0.8);
+            position: relative;
+            z-index: 10;
+        }
+
+        .pop-text {
+            position: relative;
+            z-index: 10;
+            text-shadow: 
+                3px 3px 0px #000, 
+                6px 6px 0px rgba(0,0,0,0.2);
+            -webkit-text-stroke: 2px black;
+            filter: drop-shadow(0px 10px 10px rgba(0,0,0,0.3));
+            transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .text-hot { color: #FFF; }
+        .text-fresh { color: #FFF; }
+        .text-doughnuts { color: var(--pink-accent); }
+
+        @media (max-width: 768px) {
+            .cartoon-text-sm { 
+                -webkit-text-stroke: 4px black;
+                text-shadow: 2px 2px 0px #000000;
+            }
+        }
+        @media (min-width: 768px) {
+            .pop-text {
+                -webkit-text-stroke: 3px black;
+                text-shadow: 
+                    5px 5px 0px #000, 
+                    10px 10px 0px rgba(0,0,0,0.2);
+            }
+        }
+
+        .pop-text:hover { transform: scale(1.05) translateY(-5px); }
+
+        /* --- Animations --- */
+        @keyframes float-hero {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+        @keyframes pulse-heart {
+            0% { transform: scale(1); }
+            15% { transform: scale(1.05) rotate(-2deg); }
+            30% { transform: scale(1); }
+            45% { transform: scale(1.05) rotate(2deg); }
+            100% { transform: scale(1); }
+        }
+        @keyframes logoBob {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-12px) rotate(3deg); }
+        }
+
+        .anim-float { animation: float-hero 6s ease-in-out infinite; }
+        .anim-float-delayed { animation: float-hero 7s ease-in-out infinite 1s; }
+        .anim-pulse { animation: pulse-heart 4s ease-in-out infinite; transform-origin: center; }
+        .animate-logo { animation: logoBob 5s ease-in-out infinite; }
+
+        .entrance-pop {
+            opacity: 0;
+            transform: scale(0.8) translateY(50px);
+            animation: elasticEntrance 1.2s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+        }
+        .delay-100 { animation-delay: 0.1s; }
+        .delay-200 { animation-delay: 0.3s; }
+        .delay-300 { animation-delay: 0.5s; }
+
+        @keyframes elasticEntrance {
+            to { opacity: 1; transform: scale(1) translateY(0); }
+        }
+
+        /* --- Sugar Dust Trail --- */
+        .sugar-particle {
+            position: absolute;
+            width: 6px; height: 6px; 
+            background: white;
+            border-radius: 2px;
+            pointer-events: none;
+            z-index: 9999; 
+            box-shadow: 0 0 8px rgba(255,255,255,1);
+            animation: fallFade 1.5s linear forwards;
+        }
+        @keyframes fallFade {
+            0% { transform: translate(0, 0) rotate(0deg) scale(1); opacity: 1; }
+            100% { transform: translate(20px, 80px) rotate(180deg) scale(0); opacity: 0; }
+        }
+
+        /* --- Physics Steam Canvas (Updated Position) --- */
+        #steam-canvas {
+            position: absolute;
+            /* Position bottom of canvas slightly above the visual top of the text */
+            bottom: 25%; 
+            left: 50%;
+            transform: translateX(-50%);
+            pointer-events: none;
+            z-index: 5;
+        }
+
+        /* --- Pink Email Button --- */
+        .pink-email-btn {
+            background-color: var(--pink-accent);
+            color: white;
+            border: 4px solid white;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            white-space: nowrap;
+            box-shadow: 0 10px 20px rgba(233, 30, 99, 0.4);
+            position: relative;
+            overflow: hidden; 
+        }
+        
+        .pink-email-btn::after {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%; width: 50%; height: 100%;
+            background: linear-gradient(to right, transparent, rgba(255,255,255,0.4), transparent);
+            transform: skewX(-20deg);
+            animation: shimmerSweep 4s infinite ease-in-out;
+            pointer-events: none;
+        }
+        
+        @keyframes shimmerSweep {
+            0% { left: -100%; }
+            20% { left: 200%; }
+            100% { left: 200%; }
+        }
+        
+        .pink-email-btn:hover {
+            background-color: var(--pink-hover);
+            transform: scale(1.05) translateY(-2px);
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Background Layers -->
+    <div class="wavy-bg"></div>
+    <div class="sprinkle-container" id="sprinkle-bg"></div> <!-- Sprinkles Added Here -->
+    <div class="top-glow"></div>
+    <div class="vignette"></div>
+    <div class="bokeh-container" id="bokeh-bg"></div>
+
+    <!-- Main Content -->
+    <main class="w-full h-full flex flex-col items-center justify-center p-4 relative z-10">
+        
+        <!-- Logo Section -->
+        <div class="entrance-pop flex flex-col items-center mb-6 md:mb-10 animate-logo">
+            <div class="inline-block cursor-pointer mb-2 transform hover:scale-105 transition duration-300">
+                <img src="images/logo.png" 
+                     alt="The Mini Doughnut Company" 
+                     class="w-32 h-32 md:w-48 md:h-48 object-contain rounded-full relative z-10">
+            </div>
+            <h2 class="font-bubbly text-2xl md:text-3xl mt-4 text-white text-center leading-none cartoon-text-sm">
+                The Mini Doughnut Company
+            </h2>
+        </div>
+
+        <!-- Hero Text Stack -->
+        <div class="flex flex-col items-center justify-center relative select-none">
+            
+            <!-- HOT (Steam Updated) -->
+            <div class="relative entrance-pop delay-100 anim-float">
+                <canvas id="steam-canvas" width="300" height="400"></canvas>
+                <h1 class="font-bubbly text-6xl sm:text-7xl md:text-9xl pop-text text-hot transform -rotate-3 leading-none">
+                    HOT
+                </h1>
+            </div>
+
+            <!-- FRESH -->
+            <div class="entrance-pop delay-200 anim-float-delayed relative -mt-2 md:-mt-4">
+                <h1 class="font-bubbly text-6xl sm:text-7xl md:text-9xl pop-text text-fresh transform rotate-2 leading-none">
+                    FRESH
+                </h1>
+            </div>
+
+            <!-- DOUGHNUTS -->
+            <div class="entrance-pop delay-300 relative -mt-2 md:-mt-4">
+                <h1 class="font-bubbly text-5xl sm:text-7xl md:text-9xl pop-text text-doughnuts anim-pulse leading-none">
+                    DOUGHNUTS!
+                </h1>
+            </div>
+
+        </div>
+
+        <!-- CTA Section -->
+        <div class="mt-10 md:mt-16 entrance-pop delay-300 flex flex-col items-center">
+            <a href="mailto:info@theminidoughnutcompany.com" 
+               class="pink-email-btn px-6 py-3 md:px-10 md:py-5 text-base sm:text-lg md:text-2xl font-bold rounded-full inline-flex items-center">
+                <span class="mr-2 text-xl md:text-2xl">📧</span>
+                <span class="truncate">hello@theminidoughnutcompany.com</span>
+            </a>
+            
+            <footer class="mt-8 text-blue-900 opacity-50 text-xs md:text-sm font-bold tracking-wide uppercase">
+                &copy; <script>document.write(new Date().getFullYear())</script> The Mini Doughnut Company
+            </footer>
+        </div>
+
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            createBokeh();
+            initSugarTrail();
+            initSteamPhysics();
+            initBackgroundSprinkles();
+        });
+
+        // --- 1. Physics-Based Steam Engine ---
+        function initSteamPhysics() {
+            const canvas = document.getElementById('steam-canvas');
+            const ctx = canvas.getContext('2d');
+            let particles = [];
+            let mouseX = 0; let mouseY = 0;
+
+            document.addEventListener('mousemove', (e) => {
+                const rect = canvas.getBoundingClientRect();
+                mouseX = e.clientX - rect.left;
+                mouseY = e.clientY - rect.top;
+            });
+
+            class Particle {
+                constructor() {
+                    // Start particles from bottom of canvas
+                    this.x = canvas.width / 2 + (Math.random() - 0.5) * 120;
+                    this.y = canvas.height - 20; 
+                    this.vx = (Math.random() - 0.5) * 0.5;
+                    this.vy = -(Math.random() * 1.5 + 1);
+                    this.size = Math.random() * 15 + 8;
+                    this.life = 100;
+                    this.decay = Math.random() * 0.7 + 0.3;
+                }
+                update() {
+                    this.y += this.vy;
+                    this.x += this.vx;
+                    this.life -= this.decay;
+                    this.size += 0.12;
+                    const dx = this.x - mouseX;
+                    const dy = this.y - mouseY;
+                    const dist = Math.sqrt(dx*dx + dy*dy);
+                    if (dist < 120) {
+                        const force = (120 - dist) / 120;
+                        this.vx += (dx / dist) * force * 0.6;
+                    }
+                }
+                draw() {
+                    ctx.beginPath();
+                    const gradient = ctx.createRadialGradient(
+                        this.x, this.y, 0, this.x, this.y, this.size
+                    );
+                    gradient.addColorStop(0, `rgba(255, 255, 255, ${this.life / 100 * 0.45})`);
+                    gradient.addColorStop(1, 'rgba(255, 255, 255, 0)');
+                    ctx.fillStyle = gradient;
+                    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                    ctx.fill();
+                }
+            }
+            function animate() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                if (Math.random() < 0.25) { particles.push(new Particle()); }
+                for (let i = 0; i < particles.length; i++) {
+                    particles[i].update();
+                    particles[i].draw();
+                    if (particles[i].life <= 0) {
+                        particles.splice(i, 1);
+                        i--;
+                    }
+                }
+                requestAnimationFrame(animate);
+            }
+            animate();
+        }
+
+        // --- 2. Dynamic Sprinkles (Re-added) ---
+        function initBackgroundSprinkles() {
+            const container = document.getElementById('sprinkle-bg');
+            const colors = ['#FFEB3B', '#FF4081', '#FFFFFF', '#00E676', '#BA68C8'];
+            const count = 30; 
+
+            for (let i = 0; i < count; i++) {
+                const el = document.createElement('div');
+                el.classList.add('bg-sprinkle');
+                
+                // Random properties
+                const bg = colors[Math.floor(Math.random() * colors.length)];
+                const left = Math.random() * 100;
+                const duration = Math.random() * 10 + 10; // 10-20s float time
+                const delay = Math.random() * -20; // Start immediately at random cycle point
+                const scale = Math.random() * 0.5 + 0.5; // Size variation
+                const blur = Math.random() * 2; // Depth of field
+
+                el.style.backgroundColor = bg;
+                el.style.left = `${left}%`;
+                el.style.animationDuration = `${duration}s`;
+                el.style.animationDelay = `${delay}s`;
+                el.style.transform = `scale(${scale})`;
+                el.style.filter = `blur(${blur}px)`;
+                
+                container.appendChild(el);
+            }
+        }
+
+        // --- 3. Ambient Bokeh ---
+        function createBokeh() {
+            const container = document.getElementById('bokeh-bg');
+            for (let i = 0; i < 25; i++) {
+                const orb = document.createElement('div');
+                orb.classList.add('bokeh-orb');
+                const size = Math.random() * 100 + 30; 
+                Object.assign(orb.style, {
+                    width: `${size}px`, height: `${size}px`,
+                    left: `${Math.random() * 100}%`, top: `${Math.random() * 100}%`,
+                    animationDuration: `${Math.random() * 6 + 5}s`,
+                    animationDelay: `${Math.random() * 5}s`
+                });
+                container.appendChild(orb);
+            }
+        }
+
+        // --- 4. Sugar Dust Trail ---
+        function initSugarTrail() {
+            let throttle = 0;
+            const spawnSugar = (x, y) => {
+                throttle++;
+                if (throttle % 4 !== 0) return; 
+                const particle = document.createElement('div');
+                particle.classList.add('sugar-particle');
+                
+                const offsetX = x + (Math.random() - 0.5) * 20;
+                const offsetY = y + (Math.random() - 0.5) * 20;
+
+                particle.style.left = `${offsetX}px`; 
+                particle.style.top = `${offsetY}px`;
+                document.body.appendChild(particle);
+                setTimeout(() => particle.remove(), 1500);
+            };
+
+            document.addEventListener('mousemove', (e) => {
+                spawnSugar(e.clientX, e.clientY);
+            });
+            document.addEventListener('touchmove', (e) => {
+                const touch = e.touches[0];
+                spawnSugar(touch.clientX, touch.clientY);
+            }, { passive: true });
+        }
+    </script>
+</body>
+</html>
