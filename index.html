@@ -5,10 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>The Mini Doughnut Company - Hot & Fresh</title>
     
+    <!-- Favicon (Pointing to your local logo) -->
+    <link rel="icon" type="image/png" href="images/logo.png">
+    <link rel="apple-touch-icon" href="images/logo.png">
+
+    <!-- Preload Logo for Maximum Speed -->
+    <link rel="preload" as="image" href="images/logo.png">
+    
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- Google Fonts with Swap & Preconnect -->
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&family=Titan+One&display=swap" rel="stylesheet">
@@ -22,7 +29,6 @@
             --dough-color: #F8BBD0;
         }
 
-        /* Prevent unstyled font flash by hiding main content initially */
         body {
             background-color: var(--blue-bg);
             font-family: 'Fredoka', sans-serif;
@@ -41,7 +47,7 @@
             transition: opacity 0.5s ease-in;
         }
 
-        /* --- Background Wavy Pattern --- */
+        /* --- Background Pattern --- */
         .wavy-bg {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
@@ -52,7 +58,6 @@
             animation: waveFlow 4s linear infinite;
         }
 
-        /* --- Dynamic Sprinkles --- */
         .sprinkle-container {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
@@ -76,7 +81,6 @@
             100% { transform: translateY(-10vh) rotate(360deg) translateZ(50px); opacity: 0; }
         }
 
-        /* --- Floating Doughnuts (Updated Visibility) --- */
         .doughnut-container {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
@@ -87,7 +91,7 @@
 
         .bg-doughnut {
             position: absolute;
-            opacity: 0.8; /* Increased base visibility */
+            opacity: 0.8;
             animation: floatDoughnut linear infinite;
             filter: drop-shadow(0 6px 8px rgba(0,0,0,0.15));
         }
@@ -120,7 +124,7 @@
             100% { background-position: -80px 0; }
         }
 
-        /* --- Typography Effects --- */
+        /* --- Typography --- */
         .font-bubbly { font-family: 'Titan One', cursive; }
 
         .cartoon-text-sm {
@@ -175,7 +179,6 @@
         .anim-pulse { animation: pulse-heart 4s ease-in-out infinite; transform-origin: center; }
         .animate-logo { animation: logoBob 5s ease-in-out infinite; }
 
-        /* Content initially hidden, class added by JS */
         .ready .entrance-pop {
             opacity: 0;
             transform: scale(0.8) translateY(50px);
@@ -189,7 +192,6 @@
             to { opacity: 1; transform: scale(1) translateY(0); }
         }
 
-        /* --- Sugar Dust Trail --- */
         .sugar-particle {
             position: absolute;
             width: 6px; height: 6px; background: white;
@@ -235,23 +237,23 @@
 </head>
 <body>
 
-    <!-- Background Layers (Always Visible) -->
     <div class="wavy-bg"></div>
     <div class="sprinkle-container" id="sprinkle-bg"></div>
     <div class="doughnut-container" id="doughnut-bg"></div> 
     <div class="top-glow"></div>
     <div class="vignette"></div>
 
-    <!-- Main Content (Hidden until Fonts Ready) -->
     <main id="main-content" class="w-full h-full flex flex-col items-center justify-center p-4 relative z-10">
         
-        <!-- Logo Section -->
+        <!-- Logo Section (Optimized for local storage) -->
         <div class="entrance-pop flex flex-col items-center mb-6 md:mb-10 animate-logo">
             <div class="inline-block cursor-pointer mb-2 transform hover:scale-105 transition duration-300">
-                <img src="https://via.placeholder.com/150/E91E63/FFFFFF?text=Doughnut" 
+                <!-- Directly pointing to local logo and using fetchpriority for speed -->
+                <img src="images/logo.png" 
                      alt="The Mini Doughnut Company" 
                      class="w-32 h-32 md:w-48 md:h-48 object-contain rounded-full relative z-10"
-                     onerror="this.src='images/logo.png'">
+                     fetchpriority="high"
+                     loading="eager">
             </div>
             <h2 class="font-bubbly text-2xl md:text-3xl mt-4 text-white text-center leading-none cartoon-text-sm">
                 The Mini Doughnut Company
@@ -412,7 +414,7 @@
 
         function initFloatingDoughnuts() {
             const container = document.getElementById('doughnut-bg');
-            const count = 10; // Slightly fewer for better clarity
+            const count = 10; 
 
             for (let i = 0; i < count; i++) {
                 const img = document.createElement('img');
@@ -423,8 +425,8 @@
                 const left = Math.random() * 100;
                 const duration = Math.random() * 15 + 20; 
                 const delay = Math.random() * -35; 
-                const scale = Math.random() * 0.6 + 0.6; // Scale between 0.6 and 1.2
-                const baseSize = 75; // Increased base size from 40 to 75
+                const scale = Math.random() * 0.6 + 0.6; 
+                const baseSize = 75; 
 
                 img.style.left = `${left}%`;
                 img.style.animationDuration = `${duration}s`;
