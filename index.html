@@ -76,6 +76,29 @@
             100% { transform: translateY(-10vh) rotate(360deg) translateZ(50px); opacity: 0; }
         }
 
+        /* --- Floating Doughnuts (Updated Visibility) --- */
+        .doughnut-container {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: -3;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .bg-doughnut {
+            position: absolute;
+            opacity: 0.8; /* Increased base visibility */
+            animation: floatDoughnut linear infinite;
+            filter: drop-shadow(0 6px 8px rgba(0,0,0,0.15));
+        }
+
+        @keyframes floatDoughnut {
+            0% { transform: translateY(110vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 0.85; }
+            90% { opacity: 0.85; }
+            100% { transform: translateY(-20vh) rotate(360deg); opacity: 0; }
+        }
+
         .top-glow {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 300px;
@@ -215,6 +238,7 @@
     <!-- Background Layers (Always Visible) -->
     <div class="wavy-bg"></div>
     <div class="sprinkle-container" id="sprinkle-bg"></div>
+    <div class="doughnut-container" id="doughnut-bg"></div> 
     <div class="top-glow"></div>
     <div class="vignette"></div>
 
@@ -227,7 +251,7 @@
                 <img src="https://via.placeholder.com/150/E91E63/FFFFFF?text=Doughnut" 
                      alt="The Mini Doughnut Company" 
                      class="w-32 h-32 md:w-48 md:h-48 object-contain rounded-full relative z-10"
-                     onerror="this.src='https://img.icons8.com/emoji/160/000000/doughnut-emoji.png'">
+                     onerror="this.src='images/logo.png'">
             </div>
             <h2 class="font-bubbly text-2xl md:text-3xl mt-4 text-white text-center leading-none cartoon-text-sm">
                 The Mini Doughnut Company
@@ -260,7 +284,7 @@
 
         <!-- CTA Section -->
         <div class="mt-10 md:mt-16 entrance-pop delay-300 flex flex-col items-center">
-            <a href="mailto:hello@theminidoughnutcompany.com" 
+            <a href="mailto:info@theminidoughnutcompany.com" 
                class="pink-email-btn px-6 py-3 md:px-10 md:py-5 text-base sm:text-lg md:text-2xl font-bold rounded-full inline-flex items-center">
                 <span class="mr-2 text-xl md:text-2xl">📧</span>
                 <span class="truncate">hello@theminidoughnutcompany.com</span>
@@ -275,19 +299,16 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // Initializing background visualizers immediately
             initBackgroundSprinkles();
+            initFloatingDoughnuts();
 
-            // Handle Font Loading to prevent "Ugly Flash"
             if ('fonts' in document) {
                 document.fonts.ready.then(() => {
                     revealContent();
                 }).catch(() => {
-                    // Fallback if fonts fail
                     revealContent();
                 });
             } else {
-                // Legacy browser fallback
                 setTimeout(revealContent, 500);
             }
 
@@ -301,7 +322,6 @@
             document.body.classList.add('ready');
         }
 
-        // --- 1. Physics-Based Steam Engine ---
         function initSteamPhysics() {
             const canvas = document.getElementById('steam-canvas');
             const ctx = canvas.getContext('2d');
@@ -365,7 +385,6 @@
             animate();
         }
 
-        // --- 2. Dynamic Sprinkles ---
         function initBackgroundSprinkles() {
             const container = document.getElementById('sprinkle-bg');
             const colors = ['#FFEB3B', '#FF4081', '#FFFFFF', '#00E676', '#BA68C8'];
@@ -391,7 +410,32 @@
             }
         }
 
-        // --- 3. Sugar Dust Trail ---
+        function initFloatingDoughnuts() {
+            const container = document.getElementById('doughnut-bg');
+            const count = 10; // Slightly fewer for better clarity
+
+            for (let i = 0; i < count; i++) {
+                const img = document.createElement('img');
+                img.src = "images/doughnut-emoji.png";
+                img.alt = "";
+                img.classList.add('bg-doughnut');
+
+                const left = Math.random() * 100;
+                const duration = Math.random() * 15 + 20; 
+                const delay = Math.random() * -35; 
+                const scale = Math.random() * 0.6 + 0.6; // Scale between 0.6 and 1.2
+                const baseSize = 75; // Increased base size from 40 to 75
+
+                img.style.left = `${left}%`;
+                img.style.animationDuration = `${duration}s`;
+                img.style.animationDelay = `${delay}s`;
+                img.style.width = `${baseSize * scale}px`;
+                img.style.height = `${baseSize * scale}px`;
+
+                container.appendChild(img);
+            }
+        }
+
         function initSugarTrail() {
             let throttle = 0;
             const spawnSugar = (x, y) => {
