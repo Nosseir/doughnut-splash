@@ -19,7 +19,6 @@
             --blue-bg: #4FC3F7; 
             --pink-accent: #E91E63;
             --pink-hover: #D81B60;
-            --bokeh-color: #FFFFFF;
             --dough-color: #F8BBD0;
         }
 
@@ -93,32 +92,9 @@
             pointer-events: none;
         }
 
-        .bokeh-container {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            z-index: -2;
-            pointer-events: none;
-            overflow: hidden;
-        }
-        
-        .bokeh-orb {
-            position: absolute;
-            background: var(--bokeh-color);
-            border-radius: 50%;
-            filter: blur(10px);
-            opacity: 0;
-            animation: breatheFloat 8s infinite ease-in-out;
-        }
-
         @keyframes waveFlow {
             0% { background-position: 0 0; }
             100% { background-position: -80px 0; }
-        }
-
-        @keyframes breatheFloat {
-            0% { transform: translateY(0) scale(0.8); opacity: 0; }
-            50% { opacity: 0.3; }
-            100% { transform: translateY(-100px) scale(1.2); opacity: 0; }
         }
 
         /* --- Typography Effects --- */
@@ -241,7 +217,6 @@
     <div class="sprinkle-container" id="sprinkle-bg"></div>
     <div class="top-glow"></div>
     <div class="vignette"></div>
-    <div class="bokeh-container" id="bokeh-bg"></div>
 
     <!-- Main Content (Hidden until Fonts Ready) -->
     <main id="main-content" class="w-full h-full flex flex-col items-center justify-center p-4 relative z-10">
@@ -301,7 +276,6 @@
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             // Initializing background visualizers immediately
-            createBokeh();
             initBackgroundSprinkles();
 
             // Handle Font Loading to prevent "Ugly Flash"
@@ -417,24 +391,7 @@
             }
         }
 
-        // --- 3. Ambient Bokeh ---
-        function createBokeh() {
-            const container = document.getElementById('bokeh-bg');
-            for (let i = 0; i < 25; i++) {
-                const orb = document.createElement('div');
-                orb.classList.add('bokeh-orb');
-                const size = Math.random() * 100 + 30; 
-                Object.assign(orb.style, {
-                    width: `${size}px`, height: `${size}px`,
-                    left: `${Math.random() * 100}%`, top: `${Math.random() * 100}%`,
-                    animationDuration: `${Math.random() * 6 + 5}s`,
-                    animationDelay: `${Math.random() * 5}s`
-                });
-                container.appendChild(orb);
-            }
-        }
-
-        // --- 4. Sugar Dust Trail ---
+        // --- 3. Sugar Dust Trail ---
         function initSugarTrail() {
             let throttle = 0;
             const spawnSugar = (x, y) => {
