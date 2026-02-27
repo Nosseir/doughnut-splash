@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <title>The Mini Doughnut Co. | Premium Live-Made Mini Doughnuts for Events</title>
-	<link rel="icon" type="image/png" href="images/logo.png">
-	<link rel="apple-touch-icon" href="images/logo.png">
+    <link rel="icon" type="image/png" href="images/logo.png">
+    <link rel="apple-touch-icon" href="images/logo.png">
     <meta name="description" content="Experience the magic of hot, fresh, bite-sized mini doughnuts made live at your event. Perfect for weddings, corporate events, schools, and private parties in LA, Orange County, and the Inland Empire.">
     <meta name="keywords" content="mini doughnuts, live doughnut station, event catering, dessert catering, fresh doughnuts, wedding desserts, corporate event catering, food cart catering, Los Angeles, Orange County, Riverside">
     <meta name="author" content="The Mini Doughnut Co.">
@@ -83,12 +83,17 @@
         }
 
         /* Refined Organic Morphing Mask */
-        .blob-morph-container {
-            border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
-            animation: morph 12s cubic-bezier(0.4, 0, 0.2, 1) infinite both alternate;
-            overflow: hidden;
-            box-shadow: inset 0 0 0 8px rgba(255,255,255,0.8), 0 30px 60px rgba(233,19,116,0.15);
-        }
+		.blob-morph-container {
+			border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+			animation: morph 12s cubic-bezier(0.4, 0, 0.2, 1) infinite both alternate;
+			overflow: hidden;
+			/* --- Mobile Fixes Start --- */
+			transform: translateZ(0); /* Forces GPU hardware acceleration */
+			-webkit-mask-image: -webkit-radial-gradient(white, black); /* Fixes "mask-bleeding" on iOS */
+			will-change: border-radius; /* Tells the phone to prepare for this specific change */
+			/* --- Mobile Fixes End --- */
+			box-shadow: inset 0 0 0 8px rgba(255,255,255,0.8), 0 30px 60px rgba(233,19,116,0.15);
+		}
 
         .blob-morph-image {
             animation: slow-zoom 30s linear infinite alternate;
@@ -108,13 +113,13 @@
 
         /* Buttery Smooth Infinite Marquees */
         .animate-marquee {
-            animation: marquee 35s linear infinite;
+            animation: marquee 15s linear infinite;
             display: flex;
             width: max-content;
         }
 
         .animate-marquee-reverse {
-            animation: marquee-reverse 25s linear infinite;
+            animation: marquee-reverse 15s linear infinite;
             display: flex;
             width: max-content;
         }
@@ -266,12 +271,12 @@
 >
                 <span class="hidden lg:inline tracking-tight">The Mini Doughnut Co.</span>
             </div>
-            <nav class="flex gap-3 sm:gap-6 md:gap-10 font-bold text-slate-800 text-xs sm:text-sm md:text-lg items-center" aria-label="Main Navigation">
-                <a href="#experience" class="hover:text-[#e91374] transition-colors relative group">
+            <nav class="flex gap-3 sm:gap-4 md:gap-8 font-bold text-slate-800 text-xs sm:text-sm md:text-lg items-center" aria-label="Main Navigation">
+                <a href="#experience" class="hover:text-[#e91374] transition-colors relative group hidden sm:block">
                     Experience
                     <span class="absolute -bottom-1 left-0 w-0 h-[2px] bg-[#e91374] transition-all duration-300 group-hover:w-full"></span>
                 </a>
-                <a href="#events" class="hover:text-[#3fb7e9] transition-colors relative group">
+                <a href="#events" class="hover:text-[#3fb7e9] transition-colors relative group hidden sm:block">
                     Events
                     <span class="absolute -bottom-1 left-0 w-0 h-[2px] bg-[#3fb7e9] transition-all duration-300 group-hover:w-full"></span>
                 </a>
@@ -279,8 +284,12 @@
                     Menu
                     <span class="absolute -bottom-1 left-0 w-0 h-[2px] bg-[#f59e0b] transition-all duration-300 group-hover:w-full"></span>
                 </button>
+                <button class="open-contact-btn hover:text-[#e91374] transition-colors cursor-pointer font-bold relative group" aria-haspopup="dialog" aria-expanded="false">
+                    Contact Us
+                    <span class="absolute -bottom-1 left-0 w-0 h-[2px] bg-[#e91374] transition-all duration-300 group-hover:w-full"></span>
+                </button>
             </nav>
-            <button class="magnetic-button bg-[#3fb7e9] text-white px-4 py-2 sm:px-6 md:px-8 md:py-2.5 rounded-full font-playful text-sm md:text-xl shadow-[0_4px_15px_rgba(63,183,233,0.4)] hover:shadow-[0_2px_5px_rgba(63,183,233,0.4)] hover:translate-y-[2px] active:shadow-none active:translate-y-[4px] transition-all border border-white/20 whitespace-nowrap">
+            <button class="open-booking-btn magnetic-button bg-[#3fb7e9] text-white px-4 py-2 sm:px-6 md:px-8 md:py-2.5 rounded-full font-playful text-sm md:text-xl shadow-[0_4px_15px_rgba(63,183,233,0.4)] hover:shadow-[0_2px_5px_rgba(63,183,233,0.4)] hover:translate-y-[2px] active:shadow-none active:translate-y-[4px] transition-all border border-white/20 whitespace-nowrap">
                 Book Now
             </button>
         </div>
@@ -409,13 +418,15 @@
                 </div>
             </div>
 
-            <div class="max-w-5xl mx-auto w-full text-center relative z-30 flex flex-col items-center mt-6 md:mt-20 page-enter delay-100">
-                
+				<div class="max-w-5xl mx-auto w-full text-center relative z-30 flex flex-col items-center mt-6 md:mt-8 page-enter delay-100">                
                 <div class="relative w-full flex flex-col items-center">
                     
-                    <span class="font-handwritten text-[#fcefb4] text-5xl md:text-6xl lg:text-7xl mb-6 md:mb-8 transform -rotate-3 opacity-100 drop-shadow-[0_10px_20px_rgba(0,0,0,0.6)]">
-                        The sweetest part of any party.
-                    </span>
+					<span class="font-playful text-white text-2xl md:text-5xl mb-2 font-black tracking-widest uppercase drop-shadow-[0_0_10px_rgba(233,19,116,1)] drop-shadow-[0_0_30px_rgba(233,19,116,0.8)]">
+						The Mini Doughnut Company
+					</span>
+					<span class="inline-block font-handwritten text-white bg-[#e91374] text-4xl md:text-5xl lg:text-6xl px-6 py-1 mb-8 transform -rotate-2 shadow-[4px_4px_0_rgba(0,0,0,0.1)]">
+						The sweetest part of any party.
+					</span>
                     
                     <h1 class="text-[6rem] md:text-[9rem] lg:text-[11rem] font-playful font-black leading-[0.8] tracking-[-0.04em] relative flex flex-col items-center z-20 w-full page-enter delay-200">
                         <span class="relative z-10 text-white drop-shadow-[0_8px_15px_rgba(0,0,0,0.2)]">Made Fresh.</span>
@@ -430,13 +441,13 @@
                 </p>
                 
                 <div class="flex flex-col sm:flex-row items-center justify-center gap-6 w-full sm:w-auto relative z-30 page-enter delay-300">
-                    <button class="magnetic-button font-playful text-xl md:text-2xl px-10 md:px-12 py-5 bg-[#e91374] text-white rounded-full flex items-center justify-center gap-3 w-full sm:w-auto shadow-[0_10px_20px_rgba(233,19,116,0.6)] border border-pink-400 hover:shadow-[0_5px_10px_rgba(233,19,116,0.8)] hover:translate-y-[5px] active:shadow-none active:translate-y-[10px] transition-all relative group overflow-hidden">
+                    <button class="open-booking-btn magnetic-button font-playful text-xl md:text-2xl px-10 md:px-12 py-5 bg-[#e91374] text-white rounded-full flex items-center justify-center gap-3 w-full sm:w-auto shadow-[0_10px_20px_rgba(233,19,116,0.6)] border border-pink-400 hover:shadow-[0_5px_10px_rgba(233,19,116,0.8)] hover:translate-y-[5px] active:shadow-none active:translate-y-[10px] transition-all relative group overflow-hidden">
                         <span class="relative z-10 flex items-center gap-3 tracking-wide"><span aria-hidden="true">🍩</span> Book Your Event</span>
                     </button>
-                    <button class="magnetic-button font-playful text-xl md:text-xl px-10 md:px-12 py-5 bg-white text-[#3fb7e9] rounded-full flex items-center justify-center gap-3 w-full sm:w-auto shadow-[0_10px_20px_rgba(0,0,0,0.2)] border-2 border-white hover:shadow-[0_5px_10px_rgba(0,0,0,0.3)] hover:translate-y-[5px] active:shadow-none active:translate-y-[10px] transition-all relative group overflow-hidden">
+                    <a href="#events" class="magnetic-button font-playful text-xl md:text-xl px-10 md:px-12 py-5 bg-white text-[#3fb7e9] rounded-full flex items-center justify-center gap-3 w-full sm:w-auto shadow-[0_10px_20px_rgba(0,0,0,0.2)] border-2 border-white hover:shadow-[0_5px_10px_rgba(0,0,0,0.3)] hover:translate-y-[5px] active:shadow-none active:translate-y-[10px] transition-all relative group overflow-hidden">
                         <span class="absolute inset-0 bg-[#3fb7e9]/10 translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out"></span>
                         <span class="relative z-10 flex items-center gap-2 tracking-wide font-black">📍 See Where We'll Be</span>
-                    </button>
+                    </a>
                 </div>
             </div>
 
@@ -619,6 +630,9 @@
                             <i data-lucide="map-pin" width="28" height="28" class="text-[#e91374]" aria-hidden="true"></i>
                             LA • Orange • Riverside • San Bernardino
                         </p>
+						<p class="font-playful text-[#e91374] text-2xl md:text-3xl font-extrabold mt-6 tracking-tight">
+							Serving sweet memories through Southern California
+						</p>
                     </div>
                     <a href="https://instagram.com/theminidoughnutco" target="_blank" rel="noopener noreferrer" class="magnetic-button group flex items-center gap-4 bg-slate-800 text-white px-10 py-5 rounded-full font-bold text-xl hover:bg-[#e91374] transition-all duration-300 shadow-[0_10px_25px_rgba(30,41,59,0.2)] hover:shadow-[0_15px_35px_rgba(233,19,116,0.3)]">
                         <i data-lucide="instagram" width="28" height="28" class="group-hover:scale-110 transition-transform duration-300" aria-hidden="true"></i> Follow @theminidoughnutco
@@ -719,16 +733,16 @@
                         Fresh mini doughnuts made live.
                     </p>
                     
-                    <button class="magnetic-button font-playful text-2xl md:text-4xl px-8 py-5 md:px-16 md:py-8 bg-white text-[#e91374] rounded-full inline-flex items-center justify-center gap-3 md:gap-4 w-full sm:w-auto mb-8 md:mb-14 shadow-[0_15px_30px_rgba(0,0,0,0.2)] hover:shadow-[0_8px_15px_rgba(0,0,0,0.2)] hover:translate-y-[4px] active:shadow-none active:translate-y-[8px] transition-all relative group overflow-hidden border-2 border-[#fcefb4]">
+                    <button class="open-booking-btn magnetic-button font-playful text-2xl md:text-4xl px-8 py-5 md:px-16 md:py-8 bg-white text-[#e91374] rounded-full inline-flex items-center justify-center gap-3 md:gap-4 w-full sm:w-auto mb-8 md:mb-14 shadow-[0_15px_30px_rgba(0,0,0,0.2)] hover:shadow-[0_8px_15px_rgba(0,0,0,0.2)] hover:translate-y-[4px] active:shadow-none active:translate-y-[8px] transition-all relative group overflow-hidden border-2 border-[#fcefb4]">
                         <span class="absolute inset-0 w-full h-full bg-[#fcefb4] translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out rounded-full"></span>
                         <span class="relative z-10 flex items-center gap-2 md:gap-3">Book Us Now <span aria-hidden="true">🍩</span></span>
                     </button>
                     
                     <br class="hidden md:block"/>
-                    <a href="mailto:info@theminidoughnutcompany.com" class="magnetic-button flex flex-col md:flex-row items-center justify-center gap-2 md:gap-4 text-white hover:text-[#fcefb4] transition-colors font-bold text-sm md:text-[1.35rem] bg-black/40 hover:bg-black/60 mx-auto px-6 py-4 md:px-10 md:py-5 rounded-3xl md:rounded-full backdrop-blur-sm group border border-white/30 hover:border-white/60 shadow-lg text-center break-all w-full sm:w-auto">
+                    <button class="open-contact-btn magnetic-button flex flex-col md:flex-row items-center justify-center gap-2 md:gap-4 text-white hover:text-[#fcefb4] transition-colors font-bold text-sm md:text-[1.35rem] bg-black/40 hover:bg-black/60 mx-auto px-6 py-4 md:px-10 md:py-5 rounded-3xl md:rounded-full backdrop-blur-sm group border border-white/30 hover:border-white/60 shadow-lg text-center break-all w-full sm:w-auto">
                         <i data-lucide="mail" class="w-6 h-6 md:w-7 md:h-7 group-hover:scale-110 transition-transform duration-300" aria-hidden="true"></i>
-                        info@theminidoughnutcompany.com
-                    </a>
+                        Contact Us Directly
+                    </button>
                 </div>
             </div>
         </section>
@@ -742,12 +756,13 @@
         </p>
     </footer>
 
-    <div id="menu-modal" class="fixed inset-0 z-[1000] hidden items-center justify-center p-4 sm:p-6 md:p-12 animate-fade-in" role="dialog" aria-modal="true" aria-labelledby="modal-title">
-        <div id="modal-overlay" class="absolute inset-0 bg-slate-900/50 backdrop-blur-md cursor-pointer transition-opacity" aria-hidden="true"></div>
+    <!-- Menu Modal -->
+    <div id="menu-modal" class="fixed inset-0 z-[1000] hidden items-center justify-center p-4 sm:p-6 md:p-12 animate-fade-in" role="dialog" aria-modal="true" aria-labelledby="menu-modal-title">
+        <div id="menu-overlay" class="absolute inset-0 bg-slate-900/50 backdrop-blur-md cursor-pointer transition-opacity" aria-hidden="true"></div>
         <div class="relative w-full max-w-4xl max-h-[90vh] bg-[#fffafb] rounded-[3rem] shadow-[0_30px_80px_rgba(0,0,0,0.4)] border border-white overflow-hidden flex flex-col animate-slide-up">
             
             <div class="flex justify-between items-center p-8 md:p-10 border-b border-pink-100/50 bg-white/80 backdrop-blur-md">
-                <h2 id="modal-title" class="text-4xl md:text-[3rem] font-playful font-black text-[#e91374] tracking-tight">Our Full Menu</h2>
+                <h2 id="menu-modal-title" class="text-4xl md:text-[3rem] font-playful font-black text-[#e91374] tracking-tight">Our Full Menu</h2>
                 <button id="close-menu-btn" class="p-4 bg-slate-50 hover:bg-pink-50 rounded-full transition-colors text-slate-400 hover:text-[#e91374] shadow-sm border border-slate-100 group" aria-label="Close menu">
                     <i data-lucide="x" width="28" height="28" class="group-hover:scale-110 transition-transform" aria-hidden="true"></i>
                 </button>
@@ -806,10 +821,10 @@
                             </div>
                             <div class="group cursor-default">
                                 <div class="flex justify-between items-baseline mb-2">
-                                    <h4 class="text-[1.35rem] font-black text-slate-800 group-hover:text-[#e91374] transition-colors">Maple Bacon</h4>
+                                    <h4 class="text-[1.35rem] font-black text-slate-800 group-hover:text-[#e91374] transition-colors">Fruity Pebbles</h4>
                                     <span class="text-sm font-bold text-slate-300 border-b-2 border-slate-200 border-dotted flex-grow mx-4 relative top-[-6px]" aria-hidden="true"></span>
                                 </div>
-                                <p class="text-slate-500 font-medium text-lg leading-snug pr-8">Sweet maple glaze with crispy, savory bacon bits.</p>
+                                <p class="text-slate-500 font-medium text-lg leading-snug pr-8">Vanilla Drizzle topped with Fruity Pebbles.</p>
                             </div>
                             <div class="group cursor-default">
                                 <div class="flex justify-between items-baseline mb-2">
@@ -827,6 +842,111 @@
                     <p class="font-handwritten text-5xl text-[#e91374] mb-3">Want to customize?</p>
                     <p class="text-[1.15rem] font-medium text-slate-600">We can create custom colors and flavors to perfectly match your event theme!</p>
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Booking Modal (Netlify Form) -->
+    <div id="booking-modal" class="fixed inset-0 z-[1000] hidden items-center justify-center p-4 sm:p-6 md:p-12 animate-fade-in" role="dialog" aria-modal="true" aria-labelledby="booking-modal-title">
+        <div id="booking-overlay" class="absolute inset-0 bg-slate-900/50 backdrop-blur-md cursor-pointer transition-opacity" aria-hidden="true"></div>
+        <div class="relative w-full max-w-3xl max-h-[90vh] bg-[#fffafb] rounded-[3rem] shadow-[0_30px_80px_rgba(0,0,0,0.4)] border border-white overflow-hidden flex flex-col animate-slide-up">
+            
+            <div class="flex justify-between items-center p-8 md:p-10 border-b border-pink-100/50 bg-white/80 backdrop-blur-md">
+                <h2 id="booking-modal-title" class="text-4xl md:text-[3rem] font-playful font-black text-[#e91374] tracking-tight">Book Your Event</h2>
+                <button id="close-booking-btn" class="p-4 bg-slate-50 hover:bg-pink-50 rounded-full transition-colors text-slate-400 hover:text-[#e91374] shadow-sm border border-slate-100 group" aria-label="Close booking form">
+                    <i data-lucide="x" width="28" height="28" class="group-hover:scale-110 transition-transform" aria-hidden="true"></i>
+                </button>
+            </div>
+
+            <div class="p-8 md:p-10 overflow-y-auto custom-scrollbar relative bg-[#fffafb]">
+                <form name="booking" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="space-y-6">
+                    <input class="hidden" name="bot-field">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-slate-700 font-bold mb-2 font-playful text-xl" for="name">Your Name</label>
+                            <input type="text" id="name" name="name" required class="w-full px-5 py-4 rounded-2xl bg-white border-2 border-slate-100 focus:border-[#e91374] focus:outline-none focus:ring-4 focus:ring-[#e91374]/20 transition-all text-lg text-slate-700 font-medium placeholder-slate-400 shadow-sm" placeholder="John Doe">
+                        </div>
+					<div class="grid grid-cols-1 gap-6">
+						<div>
+							<label class="block text-slate-700 font-bold mb-2 font-playful text-xl" for="email">Email Address</label>
+							<input type="email" id="email" name="email" required class="w-full px-5 py-4 rounded-2xl bg-white border-2 border-slate-100 focus:border-[#e91374] focus:outline-none focus:ring-4 focus:ring-[#e91374]/20 transition-all text-lg text-slate-700 font-medium placeholder-slate-400 shadow-sm" placeholder="john@example.com">
+						</div>
+					</div>
+
+					<div class="grid grid-cols-1 gap-6 mt-6">
+						<div>
+							<label class="block text-slate-700 font-bold mb-2 font-playful text-xl" for="phone">Phone Number</label>
+							<input type="tel" id="phone" name="phone" required class="w-full px-5 py-4 rounded-2xl bg-white border-2 border-slate-100 focus:border-[#e91374] focus:outline-none focus:ring-4 focus:ring-[#e91374]/20 transition-all text-lg text-slate-700 font-medium placeholder-slate-400 shadow-sm" placeholder="(555) 000-0000">
+						</div>
+					</div>                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-slate-700 font-bold mb-2 font-playful text-xl" for="event-date">Event Date</label>
+                            <input type="date" id="event-date" name="event-date" required class="w-full px-5 py-4 rounded-2xl bg-white border-2 border-slate-100 focus:border-[#e91374] focus:outline-none focus:ring-4 focus:ring-[#e91374]/20 transition-all text-lg text-slate-700 font-medium placeholder-slate-400 shadow-sm">
+                        </div>
+                        <div>
+                            <label class="block text-slate-700 font-bold mb-2 font-playful text-xl" for="party-type">Type of Party</label>
+                            <div class="relative">
+                                <select id="party-type" name="party-type" required class="w-full px-5 py-4 rounded-2xl bg-white border-2 border-slate-100 focus:border-[#e91374] focus:outline-none focus:ring-4 focus:ring-[#e91374]/20 transition-all text-lg text-slate-700 font-medium placeholder-slate-400 shadow-sm appearance-none cursor-pointer">
+                                    <option value="" disabled selected>Select an option...</option>
+                                    <option value="School Event">School Event</option>
+                                    <option value="Private Party">Private Party / Birthday</option>
+                                    <option value="Wedding">Wedding</option>
+                                    <option value="Corporate Event">Corporate Event</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-5 text-slate-400">
+                                    <i data-lucide="chevron-down" width="20" height="20"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-slate-700 font-bold mb-2 font-playful text-xl" for="message">Tell us more!</label>
+                        <textarea id="message" name="message" rows="4" class="w-full px-5 py-4 rounded-2xl bg-white border-2 border-slate-100 focus:border-[#e91374] focus:outline-none focus:ring-4 focus:ring-[#e91374]/20 transition-all text-lg text-slate-700 font-medium placeholder-slate-400 shadow-sm resize-none" placeholder="Approximate guest count, location, special requests..."></textarea>
+                    </div>
+                    <div class="pt-4">
+                        <button type="submit" class="w-full magnetic-button font-playful text-2xl px-8 py-5 bg-[#e91374] text-white rounded-full flex items-center justify-center gap-3 shadow-[0_10px_20px_rgba(233,19,116,0.4)] hover:shadow-[0_5px_10px_rgba(233,19,116,0.6)] transition-all group overflow-hidden relative border-2 border-pink-400">
+                            <span class="relative z-10 flex items-center gap-2">Send Request <i data-lucide="send" width="24" height="24"></i></span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Modal -->
+    <div id="contact-modal" class="fixed inset-0 z-[1000] hidden items-center justify-center p-4 sm:p-6 md:p-12 animate-fade-in" role="dialog" aria-modal="true" aria-labelledby="contact-modal-title">
+        <div id="contact-overlay" class="absolute inset-0 bg-slate-900/50 backdrop-blur-md cursor-pointer transition-opacity" aria-hidden="true"></div>
+        <div class="relative w-full max-w-2xl max-h-[90vh] bg-[#fffafb] rounded-[3rem] shadow-[0_30px_80px_rgba(0,0,0,0.4)] border border-white overflow-hidden flex flex-col animate-slide-up">
+            
+            <div class="flex justify-between items-center p-8 md:p-10 border-b border-pink-100/50 bg-white/80 backdrop-blur-md">
+                <h2 id="contact-modal-title" class="text-4xl md:text-[3rem] font-playful font-black text-[#3fb7e9] tracking-tight">Contact Us</h2>
+                <button id="close-contact-btn" class="p-4 bg-slate-50 hover:bg-pink-50 rounded-full transition-colors text-slate-400 hover:text-[#e91374] shadow-sm border border-slate-100 group" aria-label="Close contact info">
+                    <i data-lucide="x" width="28" height="28" class="group-hover:scale-110 transition-transform" aria-hidden="true"></i>
+                </button>
+            </div>
+
+            <div class="p-8 md:p-10 overflow-y-auto custom-scrollbar relative bg-[#fffafb] flex flex-col gap-6">
+                <a href="mailto:info@theminidoughnutcompany.com" class="flex items-center gap-6 p-6 bg-white rounded-3xl shadow-sm border border-slate-100 hover:shadow-md hover:border-[#3fb7e9] transition-all group cursor-pointer">
+                    <div class="w-16 h-16 rounded-2xl bg-sky-50 text-[#3fb7e9] flex items-center justify-center group-hover:scale-110 transition-transform">
+                        <i data-lucide="mail" width="32" height="32"></i>
+                    </div>
+                    <div class="break-all">
+                        <h3 class="font-playful font-black text-2xl text-slate-800">Email Us</h3>
+                        <p class="text-slate-500 font-medium text-lg">info@theminidoughnutcompany.com</p>
+                    </div>
+                </a>
+                
+                <a href="https://instagram.com/theminidoughnutco" target="_blank" rel="noopener noreferrer" class="flex items-center gap-6 p-6 bg-white rounded-3xl shadow-sm border border-slate-100 hover:shadow-md hover:border-[#e91374] transition-all group cursor-pointer">
+                    <div class="w-16 h-16 rounded-2xl bg-pink-50 text-[#e91374] flex items-center justify-center group-hover:scale-110 transition-transform">
+                        <i data-lucide="instagram" width="32" height="32"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-playful font-black text-2xl text-slate-800">Follow on Instagram</h3>
+                        <p class="text-slate-500 font-medium text-lg">@theminidoughnutco</p>
+                    </div>
+                </a>
             </div>
         </div>
     </div>
@@ -917,32 +1037,42 @@
         };
         requestRef = requestAnimationFrame(smoothParallax);
 
-        // 5. Menu Modal Toggle Logic
-        const modal = document.getElementById('menu-modal');
-        const openBtns = document.querySelectorAll('.open-menu-btn');
-        const closeBtn = document.getElementById('close-menu-btn');
-        const modalOverlay = document.getElementById('modal-overlay');
+        // 5. Modular Modal Logic for all popups
+        const setupModal = (modalId, openBtnClass, closeBtnId, overlayId) => {
+            const modal = document.getElementById(modalId);
+            const openBtns = document.querySelectorAll(openBtnClass);
+            const closeBtn = document.getElementById(closeBtnId);
+            const overlay = document.getElementById(overlayId);
 
-        const openModal = () => {
-            modal.classList.remove('hidden');
-            modal.classList.add('flex');
-            document.body.style.overflow = 'hidden'; 
-            closeBtn.focus();
+            const open = (e) => {
+                if(e) e.preventDefault();
+                modal.classList.remove('hidden');
+                modal.classList.add('flex');
+                document.body.style.overflow = 'hidden'; 
+            };
+
+            const close = () => {
+                modal.classList.add('hidden');
+                modal.classList.remove('flex');
+                document.body.style.overflow = '';
+            };
+
+            openBtns.forEach(btn => btn.addEventListener('click', open));
+            if(closeBtn) closeBtn.addEventListener('click', close);
+            if(overlay) overlay.addEventListener('click', close);
+
+            return { open, close, modal };
         };
 
-        const closeModal = () => {
-            modal.classList.add('hidden');
-            modal.classList.remove('flex');
-            document.body.style.overflow = '';
-        };
-
-        openBtns.forEach(btn => btn.addEventListener('click', openModal));
-        closeBtn.addEventListener('click', closeModal);
-        modalOverlay.addEventListener('click', closeModal);
+        const menuModal = setupModal('menu-modal', '.open-menu-btn', 'close-menu-btn', 'menu-overlay');
+        const bookingModal = setupModal('booking-modal', '.open-booking-btn', 'close-booking-btn', 'booking-overlay');
+        const contactModal = setupModal('contact-modal', '.open-contact-btn', 'close-contact-btn', 'contact-overlay');
 
         document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
-                closeModal();
+            if (e.key === 'Escape') {
+                if (!menuModal.modal.classList.contains('hidden')) menuModal.close();
+                if (!bookingModal.modal.classList.contains('hidden')) bookingModal.close();
+                if (!contactModal.modal.classList.contains('hidden')) contactModal.close();
             }
         });
 
