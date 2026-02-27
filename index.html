@@ -271,24 +271,19 @@
 >
                 <span class="hidden lg:inline tracking-tight">The Mini Doughnut Co.</span>
             </div>
-            <nav class="flex gap-3 sm:gap-4 md:gap-8 font-bold text-slate-800 text-xs sm:text-sm md:text-lg items-center" aria-label="Main Navigation">
-                <a href="#experience" class="hover:text-[#e91374] transition-colors relative group hidden sm:block">
-                    Experience
-                    <span class="absolute -bottom-1 left-0 w-0 h-[2px] bg-[#e91374] transition-all duration-300 group-hover:w-full"></span>
-                </a>
-                <a href="#events" class="hover:text-[#3fb7e9] transition-colors relative group hidden sm:block">
-                    Events
-                    <span class="absolute -bottom-1 left-0 w-0 h-[2px] bg-[#3fb7e9] transition-all duration-300 group-hover:w-full"></span>
-                </a>
-                <button class="open-menu-btn hover:text-[#f59e0b] transition-colors cursor-pointer font-bold relative group" aria-haspopup="dialog" aria-expanded="false">
-                    Menu
-                    <span class="absolute -bottom-1 left-0 w-0 h-[2px] bg-[#f59e0b] transition-all duration-300 group-hover:w-full"></span>
-                </button>
-                <button class="open-contact-btn hover:text-[#e91374] transition-colors cursor-pointer font-bold relative group" aria-haspopup="dialog" aria-expanded="false">
-                    Contact Us
-                    <span class="absolute -bottom-1 left-0 w-0 h-[2px] bg-[#e91374] transition-all duration-300 group-hover:w-full"></span>
-                </button>
-            </nav>
+			<nav class="flex gap-2 sm:gap-3 md:gap-4 items-center" aria-label="Main Navigation">
+				<button class="open-about-btn magnetic-button bg-[#e91374] text-white px-3 py-1.5 sm:px-5 sm:py-2 rounded-full font-playful text-xs md:text-lg shadow-[0_4px_15px_rgba(233,19,116,0.4)] hover:shadow-[0_2px_5px_rgba(233,19,116,0.4)] hover:translate-y-[2px] active:translate-y-[4px] transition-all border border-white/20 whitespace-nowrap">
+					About Us
+				</button>
+
+				<button class="open-menu-btn magnetic-button bg-[#e91374] text-white px-3 py-1.5 sm:px-5 sm:py-2 rounded-full font-playful text-xs md:text-lg shadow-[0_4px_15px_rgba(245,158,11,0.4)] hover:shadow-[0_2px_5px_rgba(245,158,11,0.4)] hover:translate-y-[2px] active:translate-y-[4px] transition-all border border-white/20 whitespace-nowrap">
+					Menu
+				</button>
+
+				<button class="open-contact-btn magnetic-button bg-[#e91374] text-white px-3 py-1.5 sm:px-5 sm:py-2 rounded-full font-playful text-xs md:text-lg shadow-[0_4px_15px_rgba(233,19,116,0.4)] hover:shadow-[0_2px_5px_rgba(233,19,116,0.4)] hover:translate-y-[2px] active:translate-y-[4px] transition-all border border-white/20 whitespace-nowrap">
+					Contact
+				</button>
+			</nav>
             <button class="open-booking-btn magnetic-button bg-[#3fb7e9] text-white px-4 py-2 sm:px-6 md:px-8 md:py-2.5 rounded-full font-playful text-sm md:text-xl shadow-[0_4px_15px_rgba(63,183,233,0.4)] hover:shadow-[0_2px_5px_rgba(63,183,233,0.4)] hover:translate-y-[2px] active:shadow-none active:translate-y-[4px] transition-all border border-white/20 whitespace-nowrap">
                 Book Now
             </button>
@@ -436,7 +431,7 @@
                     </h1>
                 </div>
                 
-                <p class="text-xl md:text-2xl text-white mt-12 mb-16 max-w-3xl mx-auto font-bold leading-relaxed drop-shadow-md z-20 page-enter delay-300">
+                <p id="about-us" class="text-xl md:text-2xl text-white mt-12 mb-16 max-w-3xl mx-auto font-bold leading-relaxed drop-shadow-md z-20 page-enter delay-300">
                     The Mini Doughnut Company serves hot, fresh made-to-order mini doughnuts at markets, festivals, school celebrations, private events, and corporate gatherings across Southern California.
                 </p>
                 
@@ -464,26 +459,31 @@
         <section id="experience" class="relative w-full py-16 lg:py-24 min-h-screen flex items-center px-6 z-10 overflow-hidden">
             <div id="sprinkles-container" class="absolute inset-0 overflow-hidden pointer-events-none z-0 opacity-30 mix-blend-multiply" aria-hidden="true"></div>
             
-            <div class="max-w-7xl mx-auto w-full flex flex-col lg:flex-row items-center gap-20 relative z-10">
-                <div class="lg:w-1/2 text-left relative z-10 reveal">
-                    <div class="inline-block bg-[#f0f9fd] text-[#3fb7e9] font-bold px-6 py-3 rounded-full mb-10 font-playful transform -rotate-2 shadow-sm border border-[#3fb7e9]/15 hover:rotate-0 transition-transform cursor-default tracking-wide">
-                        <i data-lucide="star" class="inline mr-2 -mt-1" width="16" height="16" aria-hidden="true"></i>
-                        The Magic Moment
-                    </div>
-                    <h2 class="text-[4rem] md:text-[5.5rem] font-playful font-black text-slate-800 mb-8 leading-[0.85] tracking-tight drop-shadow-sm">
-                        Tiny Doughnuts.<br/>
-                        <span class="text-[#e91374] relative inline-block mt-4">
-                            Big Smiles.
-                            <svg class="absolute w-[105%] h-5 -bottom-1 -left-1 text-[#fbcfe8] -z-10" viewBox="0 0 100 20" preserveAspectRatio="none" aria-hidden="true"><path d="M0 10 Q 50 25 100 5" stroke="currentColor" stroke-width="12" fill="none" stroke-linecap="round"/></svg>
-                        </span>
-                    </h2>
-                    <p class="text-2xl text-slate-500 mb-10 leading-relaxed font-light">
-                        There’s something special about watching mini doughnuts drop, flip, and turn perfectly golden before being tossed and topped just the way you like.
-                    </p>
-                    <p class="font-handwritten text-[2.75rem] text-[#3fb7e9] transform rotate-2 animate-float opacity-90 cursor-default drop-shadow-sm">
-                        It's literally mesmerizing...
-                    </p>
-                </div>
+			<div class="max-w-7xl mx-auto w-full flex flex-col lg:flex-row items-center gap-12 md:gap-20 relative z-10">
+				<div class="lg:w-1/2 text-center lg:text-left relative z-10 reveal">
+					<div class="inline-block bg-[#f0f9fd] text-[#3fb7e9] font-bold px-6 py-3 rounded-full mb-10 font-playful transform -rotate-2 shadow-sm border border-[#3fb7e9]/15">
+						<i data-lucide="star" class="inline mr-2 -mt-1" width="16" height="16"></i>
+						The Magic Moment
+					</div>
+					
+					<h2 class="text-[3.5rem] md:text-[5.5rem] font-playful font-black text-slate-800 mb-8 leading-[0.9] tracking-tight">
+						Tiny Doughnuts.<br/>
+						<span class="text-[#e91374] relative inline-block mt-4">
+							Big Smiles.
+							<svg class="absolute w-[105%] h-5 -bottom-1 left-1/2 -translate-x-1/2 lg:left-[-2.5%] lg:translate-x-0 text-[#fbcfe8] -z-10" viewBox="0 0 100 20" preserveAspectRatio="none">
+								<path d="M0 10 Q 50 25 100 5" stroke="currentColor" stroke-width="12" fill="none" stroke-linecap="round"/>
+							</svg>
+						</span>
+					</h2>
+					
+					<p class="text-xl md:text-2xl text-slate-500 mb-10 leading-relaxed font-light max-w-lg mx-auto lg:mx-0">
+						There’s something special about watching mini doughnuts drop, flip, and turn perfectly golden before being tossed and topped just the way you like.
+					</p>
+					
+					<p class="font-handwritten text-[2.5rem] md:text-[2.75rem] text-[#3fb7e9] transform rotate-2 animate-float">
+						It's literally mesmerizing...
+					</p>
+				</div>
                 
                 <div class="lg:w-1/2 relative w-full aspect-square flex items-center justify-center mt-16 lg:mt-0 reveal reveal-delay-200">
                     
@@ -535,32 +535,33 @@
                     </h2>
                 </div>
 
-                <div class="flex flex-col md:flex-row justify-center items-center gap-12 md:gap-10 h-auto relative">
-                    
-                    <div class="relative w-full md:w-[380px] p-12 glass-panel rounded-[3rem] transition-all duration-700 transform -rotate-6 md:-rotate-12 md:-translate-y-8 md:hover:-translate-y-16 hover:rotate-[-8deg] hover:z-30 group cursor-pointer hover:shadow-[0_30px_60px_rgba(63,183,233,0.15)] reveal-zoom reveal-delay-100">
-                        <div class="w-24 h-24 rounded-[2rem] flex items-center justify-center mb-10 text-white shadow-lg transform transition-transform duration-500 group-hover:scale-110 group-hover:rotate-[15deg] bg-gradient-to-br from-[#5cd0ff] to-[#3fb7e9]">
-                            <i data-lucide="graduation-cap" width="44" height="44" aria-hidden="true"></i>
-                        </div>
-                        <h3 class="text-4xl font-playful font-black text-slate-800 tracking-tight mb-5">Schools</h3>
-                        <p class="text-slate-500 font-medium text-xl leading-relaxed">Perfect for fundraisers, graduations, and teacher appreciation days. Guaranteed smiles.</p>
-                    </div>
+				<div class="flex flex-col md:flex-row justify-center items-center gap-12 md:gap-10 h-auto relative">
+					
+					<div class="relative w-full md:w-[380px] p-12 glass-panel rounded-[3rem] flex flex-col items-center text-center transition-all duration-700 transform -rotate-2 md:-rotate-12 md:-translate-y-8 md:hover:-translate-y-16 hover:rotate-[-8deg] hover:z-30 group cursor-pointer hover:shadow-[0_30px_60px_rgba(63,183,233,0.15)] reveal-zoom reveal-delay-100">
+						<div class="w-24 h-24 rounded-[2rem] flex items-center justify-center mb-10 text-white shadow-lg transform transition-transform duration-500 group-hover:scale-110 group-hover:rotate-[15deg] bg-gradient-to-br from-[#5cd0ff] to-[#3fb7e9]">
+							<i data-lucide="graduation-cap" width="44" height="44" aria-hidden="true"></i>
+						</div>
+						<h3 class="text-4xl font-playful font-black text-slate-800 tracking-tight mb-5">Schools</h3>
+						<p class="text-slate-500 font-medium text-xl leading-relaxed">Perfect for fundraisers, graduations, and teacher appreciation days. Guaranteed smiles.</p>
+					</div>
 
-                    <div class="relative w-full md:w-[380px] p-12 glass-panel rounded-[3rem] transition-all duration-700 transform rotate-3 md:rotate-6 z-10 md:translate-y-16 md:hover:translate-y-6 scale-105 hover:rotate-[4deg] hover:z-30 group cursor-pointer hover:shadow-[0_30px_60px_rgba(233,19,116,0.15)] reveal-zoom reveal-delay-200">
-                        <div class="w-24 h-24 rounded-[2rem] flex items-center justify-center mb-10 text-white shadow-lg transform transition-transform duration-500 group-hover:scale-110 group-hover:rotate-[15deg] bg-gradient-to-br from-[#ff6baf] to-[#e91374]">
-                            <i data-lucide="party-popper" width="44" height="44" aria-hidden="true"></i>
-                        </div>
-                        <h3 class="text-4xl font-playful font-black text-slate-800 tracking-tight mb-5">Private Events</h3>
-                        <p class="text-slate-500 font-medium text-xl leading-relaxed">Birthdays, weddings, and backyard parties. We make your special day a little sweeter.</p>
-                    </div>
+					<div class="relative w-full md:w-[380px] p-12 glass-panel rounded-[3rem] flex flex-col items-center text-center transition-all duration-700 transform rotate-2 md:rotate-6 z-10 md:translate-y-16 md:hover:translate-y-6 scale-105 hover:rotate-[4deg] hover:z-30 group cursor-pointer hover:shadow-[0_30px_60px_rgba(233,19,116,0.15)] reveal-zoom reveal-delay-200">
+						<div class="w-24 h-24 rounded-[2rem] flex items-center justify-center mb-10 text-white shadow-lg transform transition-transform duration-500 group-hover:scale-110 group-hover:rotate-[15deg] bg-gradient-to-br from-[#ff6baf] to-[#e91374]">
+							<i data-lucide="party-popper" width="44" height="44" aria-hidden="true"></i>
+						</div>
+						<h3 class="text-4xl font-playful font-black text-slate-800 tracking-tight mb-5">Private Events</h3>
+						<p class="text-slate-500 font-medium text-xl leading-relaxed">Birthdays, weddings, and backyard parties. We make your special day a little sweeter.</p>
+					</div>
 
-                    <div class="relative w-full md:w-[380px] p-12 glass-panel rounded-[3rem] transition-all duration-700 transform rotate-6 md:-rotate-6 md:-translate-y-12 md:hover:-translate-y-20 hover:rotate-[-4deg] hover:z-30 group cursor-pointer hover:shadow-[0_30px_60px_rgba(245,158,11,0.15)] reveal-zoom reveal-delay-300">
-                        <div class="w-24 h-24 rounded-[2rem] flex items-center justify-center mb-10 text-white shadow-lg transform transition-transform duration-500 group-hover:scale-110 group-hover:rotate-[15deg] bg-gradient-to-br from-[#fbbf24] to-[#f59e0b]">
-                            <i data-lucide="building-2" width="44" height="44" aria-hidden="true"></i>
-                        </div>
-                        <h3 class="text-4xl font-playful font-black text-slate-800 tracking-tight mb-5">Corporate</h3>
-                        <p class="text-slate-500 font-medium text-xl leading-relaxed">Employee appreciations, product launches, and team-building treats done right.</p>
-                    </div>
-                </div>
+					<div class="relative w-full md:w-[380px] p-12 glass-panel rounded-[3rem] flex flex-col items-center text-center transition-all duration-700 transform rotate-2 md:-rotate-6 md:-translate-y-12 md:hover:-translate-y-20 hover:rotate-[-4deg] hover:z-30 group cursor-pointer hover:shadow-[0_30px_60px_rgba(245,158,11,0.15)] reveal-zoom reveal-delay-300">
+						<div class="w-24 h-24 rounded-[2rem] flex items-center justify-center mb-10 text-white shadow-lg transform transition-transform duration-500 group-hover:scale-110 group-hover:rotate-[15deg] bg-gradient-to-br from-[#fbbf24] to-[#f59e0b]">
+							<i data-lucide="building-2" width="44" height="44" aria-hidden="true"></i>
+						</div>
+						<h3 class="text-4xl font-playful font-black text-slate-800 tracking-tight mb-5">Corporate</h3>
+						<p class="text-slate-500 font-medium text-xl leading-relaxed">Employee appreciations, product launches, and team-building treats done right.</p>
+					</div>
+					
+				</div>
             </div>
         </section>
 
@@ -617,29 +618,31 @@
                 <i data-lucide="heart" width="400" height="400" fill="currentColor"></i>
             </div>
 
-            <div class="max-w-7xl mx-auto w-full relative z-10">
-                <div class="flex flex-col md:flex-row justify-between items-end mb-16 md:mb-24 gap-10 reveal">
-                    <div class="text-left relative">
-                        <span class="absolute -top-12 left-0 font-handwritten text-[#3fb7e9] text-[3rem] -rotate-6">
-                            See you there!
-                        </span>
-                        <h2 class="text-[4.5rem] md:text-7xl font-playful font-black text-slate-800 mb-8 tracking-tight">
-                            Catch Us Around
-                        </h2>
-                        <p class="text-[1.35rem] text-slate-500 font-bold flex items-center gap-4 bg-white inline-flex px-8 py-4 rounded-full border border-slate-100 shadow-sm">
-                            <i data-lucide="map-pin" width="28" height="28" class="text-[#e91374]" aria-hidden="true"></i>
-                            LA • Orange • Riverside • San Bernardino
-                        </p>
-						<p class="font-playful text-[#e91374] text-2xl md:text-3xl font-extrabold mt-6 tracking-tight">
-							Serving sweet memories through Southern California
-						</p>
-                    </div>
-                    <a href="https://instagram.com/theminidoughnutco" target="_blank" rel="noopener noreferrer" class="magnetic-button group flex items-center gap-4 bg-slate-800 text-white px-10 py-5 rounded-full font-bold text-xl hover:bg-[#e91374] transition-all duration-300 shadow-[0_10px_25px_rgba(30,41,59,0.2)] hover:shadow-[0_15px_35px_rgba(233,19,116,0.3)]">
-                        <i data-lucide="instagram" width="28" height="28" class="group-hover:scale-110 transition-transform duration-300" aria-hidden="true"></i> Follow @theminidoughnutco
-                    </a>
-                </div>
+				<div class="max-w-7xl mx-auto w-full relative z-10">
+					<div class="flex flex-col items-center text-center mb-20 md:mb-28 reveal">
+						
+						<div class="relative mb-8">
+							<span class="absolute -top-16 left-1/2 transform -translate-x-1/2 font-handwritten text-[#3fb7e9] text-[3.5rem] md:text-[4.5rem] -rotate-6 whitespace-nowrap drop-shadow-sm">
+								See you there!
+							</span>
+							
+							<h2 class="text-6xl md:text-8xl font-playful font-black text-slate-800 mb-6 tracking-tight leading-none">
+								Catch Us Around
+							</h2>
+							
+							<p class="font-playful text-[#e91374] text-2xl md:text-4xl font-extrabold tracking-tight">
+								Serving sweet memories <span class="text-slate-400 font-medium italic">through Southern California</span>
+							</p>
+						</div>
 
-                <div class="grid grid-cols-2 md:grid-cols-3 gap-10 md:gap-16">
+						<a href="https://instagram.com/theminidoughnutco" target="_blank" rel="noopener noreferrer" class="magnetic-button group flex items-center gap-4 bg-slate-800 text-white px-10 py-5 rounded-full font-bold text-xl hover:bg-[#e91374] transition-all duration-300 shadow-[0_10px_25px_rgba(30,41,59,0.2)] hover:shadow-[0_15px_35px_rgba(233,19,116,0.3)]">
+							<i data-lucide="instagram" width="28" height="28" class="group-hover:scale-110 transition-transform duration-300" aria-hidden="true"></i> 
+							Follow @theminidoughnutco
+						</a>
+					</div>
+
+					<div class="grid grid-cols-2 md:grid-cols-3 gap-10 md:gap-16">
+
                     <a href="https://instagram.com/theminidoughnutco" target="_blank" rel="noopener noreferrer" class="block relative aspect-square bg-white p-5 pb-20 rounded-sm shadow-[0_20px_40px_rgba(0,0,0,0.08)] transform rotate-2 mt-0 hover:rotate-0 hover:scale-[1.12] hover:z-30 transition-all duration-500 ease-out cursor-pointer group/post reveal-zoom reveal-delay-100">
                         <div class="absolute -top-4 left-1/2 -translate-x-1/2 w-28 h-9 washi-tape-pattern transform -rotate-2 shadow-sm backdrop-blur-sm z-10 transition-opacity duration-300 pointer-events-none"></div>
                         <div class="relative w-full h-full rounded-[2px] overflow-hidden border border-slate-100">
@@ -915,6 +918,33 @@
         </div>
     </div>
 
+
+
+    <!-- About Modal -->
+
+<div id="about-modal" class="fixed inset-0 z-[1000] hidden items-center justify-center p-4 sm:p-6 md:p-12 animate-fade-in" role="dialog" aria-modal="true" aria-labelledby="about-modal-title">
+    <div id="about-overlay" class="absolute inset-0 bg-slate-900/50 backdrop-blur-md cursor-pointer transition-opacity" aria-hidden="true"></div>
+    <div class="relative w-full max-w-2xl max-h-[90vh] bg-[#fffafb] rounded-[3rem] shadow-[0_30px_80px_rgba(0,0,0,0.4)] border border-white overflow-hidden flex flex-col animate-slide-up">
+        
+        <div class="flex justify-between items-center p-8 md:p-10 border-b border-pink-100/50 bg-white/80 backdrop-blur-md">
+            <h2 id="about-modal-title" class="text-4xl md:text-[3rem] font-playful font-black text-[#e91374] tracking-tight">About Us</h2>
+            <button id="close-about-btn" class="p-4 bg-slate-50 hover:bg-pink-50 rounded-full transition-colors text-slate-400 hover:text-[#e91374] shadow-sm border border-slate-100 group" aria-label="Close about us">
+                <i data-lucide="x" width="28" height="28" class="group-hover:scale-110 transition-transform" aria-hidden="true"></i>
+            </button>
+        </div>
+
+        <div class="p-8 md:p-10 overflow-y-auto custom-scrollbar relative bg-[#fffafb]">
+            <p class="text-xl md:text-2xl text-slate-600 font-bold leading-relaxed">
+                The Mini Doughnut Company serves hot, fresh made-to-order mini doughnuts at markets, festivals, school celebrations, private events, and corporate gatherings across Southern California.
+            </p>
+            <div class="mt-8 p-6 bg-sky-50 rounded-2xl border-2 border-dashed border-sky-100 text-center">
+                <p class="font-handwritten text-4xl text-[#3fb7e9]">Sweetening every moment!</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
     <!-- Contact Modal -->
     <div id="contact-modal" class="fixed inset-0 z-[1000] hidden items-center justify-center p-4 sm:p-6 md:p-12 animate-fade-in" role="dialog" aria-modal="true" aria-labelledby="contact-modal-title">
         <div id="contact-overlay" class="absolute inset-0 bg-slate-900/50 backdrop-blur-md cursor-pointer transition-opacity" aria-hidden="true"></div>
@@ -1073,8 +1103,11 @@
                 if (!menuModal.modal.classList.contains('hidden')) menuModal.close();
                 if (!bookingModal.modal.classList.contains('hidden')) bookingModal.close();
                 if (!contactModal.modal.classList.contains('hidden')) contactModal.close();
+				if (!aboutModal.modal.classList.contains('hidden')) aboutModal.close();
             }
         });
+		
+		const aboutModal = setupModal('about-modal', '.open-about-btn', 'close-about-btn', 'about-overlay');
 
     </script>
 </body>
