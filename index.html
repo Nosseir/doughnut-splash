@@ -1,464 +1,1025 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>The Mini Doughnut Company - Hot & Fresh</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!-- Favicon (Pointing to your local logo) -->
-    <link rel="icon" type="image/png" href="images/logo.png">
-    <link rel="apple-touch-icon" href="images/logo.png">
+    <!-- Heavy SEO Optimization -->
+    <title>The Mini Doughnut Co. | Premium Live-Made Mini Doughnuts for Events</title>
+    <meta name="description" content="Experience the magic of hot, fresh, bite-sized mini doughnuts made live at your event. Perfect for weddings, corporate events, schools, and private parties in LA, Orange County, and the Inland Empire.">
+    <meta name="keywords" content="mini doughnuts, live doughnut station, event catering, dessert catering, fresh doughnuts, wedding desserts, corporate event catering, food cart catering, Los Angeles, Orange County, Riverside">
+    <meta name="author" content="The Mini Doughnut Co.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://theminidoughnutcompany.com/">
 
-    <!-- Preload Logo for Maximum Speed -->
-    <link rel="preload" as="image" href="images/logo.png">
-    
-    <!-- Tailwind CSS -->
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://theminidoughnutcompany.com/">
+    <meta property="og:title" content="The Mini Doughnut Co. | Hot, Fresh, Bite-Sized Joy">
+    <meta property="og:description" content="We bring the doughnut machine to you! Watch our delicious mini doughnuts drop, flip, and turn golden right before your eyes.">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1551024506-0bccd828d307?auto=format&fit=crop&q=80&w=1200">
+
+    <!-- JSON-LD Structured Data for Local Business / Catering -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FoodEstablishment",
+      "name": "The Mini Doughnut Co.",
+      "image": "https://images.unsplash.com/photo-1551024506-0bccd828d307?auto=format&fit=crop&q=80&w=1200",
+      "@id": "https://theminidoughnutcompany.com/",
+      "url": "https://theminidoughnutcompany.com/",
+      "telephone": "",
+      "servesCuisine": "Dessert, Doughnuts",
+      "description": "Premium live-made mini doughnut catering for events across Southern California.",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Los Angeles",
+        "addressRegion": "CA",
+        "addressCountry": "US"
+      },
+      "areaServed": ["Los Angeles", "Orange County", "Riverside", "San Bernardino"],
+      "priceRange": "$$"
+    }
+    </script>
+
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons CDN -->
+    <script src="https://unpkg.com/lucide@latest"></script>
     
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&family=Titan+One&display=swap" rel="stylesheet">
-
     <style>
-        /* --- Color Palette --- */
-        :root {
-            --blue-bg: #4FC3F7; 
-            --pink-accent: #E91E63;
-            --pink-hover: #D81B60;
-            --dough-color: #F8BBD0;
-        }
+        @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Fredoka:wght@400;500;600;700;800;900&family=Nunito:wght@300;400;500;600;700;800;900&display=swap');
 
         body {
-            background-color: var(--blue-bg);
-            font-family: 'Fredoka', sans-serif;
+            font-family: 'Nunito', sans-serif;
+            background-color: #fffafb;
+        }
+
+        .font-playful { font-family: 'Fredoka', sans-serif; }
+        .font-handwritten { font-family: 'Caveat', cursive; }
+
+        /* Elegant Global Scrollbar */
+        ::-webkit-scrollbar { width: 12px; }
+        ::-webkit-scrollbar-track { background: #fffafb; }
+        ::-webkit-scrollbar-thumb {
+            background: #fbcfe8;
+            border-radius: 10px;
+            border: 3px solid #fffafb;
+        }
+        ::-webkit-scrollbar-thumb:hover { background: #f472b6; }
+
+        /* Artistic Custom Shadows & Gradients */
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08), inset 0 0 0 1px rgba(255, 255, 255, 0.8);
+        }
+
+        .text-glow {
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.4), 0 0 40px rgba(255, 255, 255, 0.2);
+        }
+
+        .sticker-shadow {
+            box-shadow: 2px 8px 20px rgba(233,19,116,0.15), 0 0 0 1px rgba(255,255,255,0.8);
+        }
+
+        /* Refined Organic Morphing Mask */
+        .blob-morph-container {
+            border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+            animation: morph 12s cubic-bezier(0.4, 0, 0.2, 1) infinite both alternate;
             overflow: hidden;
-            margin: 0;
-            height: 100vh;
+            box-shadow: inset 0 0 0 8px rgba(255,255,255,0.8), 0 30px 60px rgba(233,19,116,0.15);
+        }
+
+        .blob-morph-image {
+            animation: slow-zoom 30s linear infinite alternate;
+            filter: sepia(10%) contrast(1.05);
+        }
+
+        @keyframes morph {
+            0% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+            50% { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
+            100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+        }
+
+        @keyframes slow-zoom {
+            from { transform: scale(1); }
+            to { transform: scale(1.15); }
+        }
+
+        /* Buttery Smooth Infinite Marquees */
+        .animate-marquee {
+            animation: marquee 35s linear infinite;
             display: flex;
-            flex-direction: column;
-            color: white;
-            cursor: default;
-            perspective: 1000px;
+            width: max-content;
         }
 
-        #main-content {
-            opacity: 0;
-            transition: opacity 0.5s ease-in;
+        .animate-marquee-reverse {
+            animation: marquee-reverse 25s linear infinite;
+            display: flex;
+            width: max-content;
         }
 
-        /* --- Background Pattern --- */
-        .wavy-bg {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            z-index: -4;
-            background-image: url("data:image/svg+xml,%3Csvg width='100' height='40' viewBox='0 0 100 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 20 Q 25 5 50 20 T 100 20' fill='none' stroke='white' stroke-opacity='0.25' stroke-width='2'/%3E%3C/svg%3E");
-            background-size: 80px 40px;
-            background-repeat: repeat;
-            animation: waveFlow 4s linear infinite;
+        @keyframes marquee {
+            0% { transform: translateX(0%); }
+            100% { transform: translateX(-50%); }
         }
 
-        .sprinkle-container {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            z-index: -3;
-            pointer-events: none;
-            overflow: hidden;
+        @keyframes marquee-reverse {
+            0% { transform: translateX(-50%); }
+            100% { transform: translateX(0%); }
         }
 
-        .bg-sprinkle {
-            position: absolute;
-            width: 12px; height: 4px;
-            border-radius: 4px;
-            opacity: 0.8;
-            animation: floatSprinkle linear infinite;
-        }
-
-        @keyframes floatSprinkle {
-            0% { transform: translateY(110vh) rotate(0deg) translateZ(0); opacity: 0; }
-            10% { opacity: 0.8; }
-            90% { opacity: 0.8; }
-            100% { transform: translateY(-10vh) rotate(360deg) translateZ(50px); opacity: 0; }
-        }
-
-        .doughnut-container {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            z-index: -3;
-            pointer-events: none;
-            overflow: hidden;
-        }
-
-        .bg-doughnut {
-            position: absolute;
-            opacity: 0.8;
-            animation: floatDoughnut linear infinite;
-            filter: drop-shadow(0 6px 8px rgba(0,0,0,0.15));
-        }
-
-        @keyframes floatDoughnut {
-            0% { transform: translateY(110vh) rotate(0deg); opacity: 0; }
-            10% { opacity: 0.85; }
-            90% { opacity: 0.85; }
-            100% { transform: translateY(-20vh) rotate(360deg); opacity: 0; }
-        }
-
-        .top-glow {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 300px;
-            background: linear-gradient(to bottom, rgba(255,255,255,0.4) 0%, transparent 100%);
-            z-index: -2;
-            pointer-events: none;
-        }
-
-        .vignette {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: radial-gradient(circle at center, transparent 30%, rgba(0,0,0,0.15) 100%);
-            z-index: -1;
-            pointer-events: none;
-        }
-
-        @keyframes waveFlow {
-            0% { background-position: 0 0; }
-            100% { background-position: -80px 0; }
-        }
-
-        /* --- Typography --- */
-        .font-bubbly { font-family: 'Titan One', cursive; }
-
-        .cartoon-text-sm {
-            -webkit-text-stroke: 6px black;
-            paint-order: stroke fill;
-            text-shadow: 4px 4px 0px rgba(0,0,0,0.8);
-            position: relative;
-            z-index: 10;
-        }
-
-        .pop-text {
-            position: relative;
-            z-index: 10;
-            text-shadow: 3px 3px 0px #000, 6px 6px 0px rgba(0,0,0,0.2);
-            -webkit-text-stroke: 2px black;
-            filter: drop-shadow(0px 10px 10px rgba(0,0,0,0.3));
-            transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-
-        .text-hot { color: #FFF; }
-        .text-fresh { color: #FFF; }
-        .text-doughnuts { color: var(--pink-accent); }
-
-        @media (max-width: 768px) {
-            .cartoon-text-sm { -webkit-text-stroke: 4px black; text-shadow: 2px 2px 0px #000000; }
-        }
-        @media (min-width: 768px) {
-            .pop-text { -webkit-text-stroke: 3px black; text-shadow: 5px 5px 0px #000, 10px 10px 0px rgba(0,0,0,0.2); }
-        }
-
-        .pop-text:hover { transform: scale(1.05) translateY(-5px); }
-
-        /* --- Animations --- */
-        @keyframes float-hero {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-15px); }
-        }
-        @keyframes pulse-heart {
-            0% { transform: scale(1); }
-            15% { transform: scale(1.05) rotate(-2deg); }
-            30% { transform: scale(1); }
-            45% { transform: scale(1.05) rotate(2deg); }
-            100% { transform: scale(1); }
-        }
-        @keyframes logoBob {
+        /* Refined Floating Physics */
+        .animate-float { animation: float 8s cubic-bezier(0.4, 0, 0.2, 1) infinite; }
+        @keyframes float {
             0%, 100% { transform: translateY(0) rotate(0deg); }
-            50% { transform: translateY(-12px) rotate(3deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
         }
 
-        .anim-float { animation: float-hero 6s ease-in-out infinite; }
-        .anim-float-delayed { animation: float-hero 7s ease-in-out infinite 1s; }
-        .anim-pulse { animation: pulse-heart 4s ease-in-out infinite; transform-origin: center; }
-        .animate-logo { animation: logoBob 5s ease-in-out infinite; }
+        .animate-blob { animation: blob 20s cubic-bezier(0.4, 0, 0.2, 1) infinite; }
+        .animation-delay-2000 { animation-delay: 2s; }
+        .animation-delay-4000 { animation-delay: 4s; }
+        
+        @keyframes blob {
+            0% { transform: translate(0px, 0px) scale(1); }
+            33% { transform: translate(60px, -80px) scale(1.15); }
+            66% { transform: translate(-50px, 50px) scale(0.85); }
+            100% { transform: translate(0px, 0px) scale(1); }
+        }
 
-        .ready .entrance-pop {
+        .animate-spin-slow { animation: spin 25s linear infinite; }
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .animate-spin-slow-reverse { animation: spin-reverse 30s linear infinite; }
+        @keyframes spin-reverse {
+            from { transform: rotate(360deg); }
+            to { transform: rotate(0deg); }
+        }
+
+        .animate-wiggle { animation: wiggle 3s cubic-bezier(0.4, 0, 0.2, 1) infinite; }
+        @keyframes wiggle {
+            0%, 100% { transform: rotate(-10deg) scale(1); }
+            50% { transform: rotate(-5deg) scale(1.03); }
+        }
+
+        /* Subtle Infinite Floating for Background Objects */
+        .animate-float-slow { animation: float-slow 8s ease-in-out infinite; }
+        .animate-float-slower { animation: float-slow 12s ease-in-out infinite reverse; }
+        @keyframes float-slow {
+            0%, 100% { transform: translateY(0) rotate(0deg) scale(1); }
+            50% { transform: translateY(-40px) rotate(15deg) scale(1.08); }
+        }
+
+        /* Continuous Falling Animation for Sprinkles */
+        @keyframes fall {
+            0% { transform: translateY(-10vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
+        }
+
+        /* Beautiful Page Entrance Animations */
+        @keyframes pageFadeInUp {
+            0% { opacity: 0; transform: translateY(40px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+        .page-enter {
+            animation: pageFadeInUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
             opacity: 0;
-            transform: scale(0.8) translateY(50px);
-            animation: elasticEntrance 1.2s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
         }
         .delay-100 { animation-delay: 0.1s; }
-        .delay-200 { animation-delay: 0.3s; }
-        .delay-300 { animation-delay: 0.5s; }
+        .delay-200 { animation-delay: 0.2s; }
+        .delay-300 { animation-delay: 0.4s; }
 
-        @keyframes elasticEntrance {
-            to { opacity: 1; transform: scale(1) translateY(0); }
+        /* Scroll Reveal Animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+            will-change: opacity, transform;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .reveal-zoom {
+            opacity: 0;
+            transform: scale(0.9) translateY(30px);
+            transition: all 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+            will-change: opacity, transform;
+        }
+        .reveal-zoom.active {
+            opacity: 1;
+            transform: scale(1) translateY(0);
+        }
+        .reveal-delay-100 { transition-delay: 0.1s; }
+        .reveal-delay-200 { transition-delay: 0.2s; }
+        .reveal-delay-300 { transition-delay: 0.3s; }
+        .reveal-delay-400 { transition-delay: 0.4s; }
+        .reveal-delay-500 { transition-delay: 0.5s; }
+
+        /* Modal Animations */
+        .animate-fade-in { animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+        @keyframes fadeIn {
+            from { opacity: 0; backdrop-filter: blur(0px); }
+            to { opacity: 1; backdrop-filter: blur(8px); }
         }
 
-        .sugar-particle {
-            position: absolute;
-            width: 6px; height: 6px; background: white;
-            border-radius: 2px; pointer-events: none;
-            z-index: 9999; box-shadow: 0 0 8px rgba(255,255,255,1);
-            animation: fallFade 1.5s linear forwards;
-        }
-        @keyframes fallFade {
-            0% { transform: translate(0, 0) rotate(0deg) scale(1); opacity: 1; }
-            100% { transform: translate(20px, 80px) rotate(180deg) scale(0); opacity: 0; }
+        .animate-slide-up { animation: slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(60px) scale(0.95); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
         }
 
-        #steam-canvas {
-            position: absolute;
-            bottom: 25%; left: 50%;
-            transform: translateX(-50%);
-            pointer-events: none;
-            z-index: 5;
-        }
+        /* Custom Scrollbar for Modal */
+        .custom-scrollbar::-webkit-scrollbar { width: 6px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: #f8fafc; border-radius: 10px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
 
-        .pink-email-btn {
-            background-color: var(--pink-accent); color: white;
-            border: 4px solid white; transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            white-space: nowrap; box-shadow: 0 10px 20px rgba(233, 30, 99, 0.4);
-            position: relative; overflow: hidden; 
+        /* Beautiful Washi Tape effect */
+        .washi-tape-pattern {
+            background-image: 
+                linear-gradient(45deg, transparent 45%, rgba(255,255,255,0.4) 45%, rgba(255,255,255,0.4) 55%, transparent 55%),
+                linear-gradient(-45deg, transparent 45%, rgba(255,255,255,0.4) 45%, rgba(255,255,255,0.4) 55%, transparent 55%);
+            background-size: 8px 8px;
+            background-color: rgba(255, 255, 255, 0.7);
+            border-left: 1px dashed rgba(0,0,0,0.05);
+            border-right: 1px dashed rgba(0,0,0,0.05);
         }
-        
-        .pink-email-btn::after {
-            content: ''; position: absolute;
-            top: 0; left: -100%; width: 50%; height: 100%;
-            background: linear-gradient(to right, transparent, rgba(255,255,255,0.4), transparent);
-            transform: skewX(-20deg); animation: shimmerSweep 4s infinite ease-in-out;
-            pointer-events: none;
-        }
-        
-        @keyframes shimmerSweep {
-            0% { left: -100%; } 20% { left: 200%; } 100% { left: 200%; }
-        }
-        
-        .pink-email-btn:hover { background-color: var(--pink-hover); transform: scale(1.05) translateY(-2px); }
-
     </style>
 </head>
-<body>
+<body class="font-sans antialiased text-slate-800 bg-[#fffafb] overflow-x-hidden selection:bg-[#e91374] selection:text-white relative">
 
-    <div class="wavy-bg"></div>
-    <div class="sprinkle-container" id="sprinkle-bg"></div>
-    <div class="doughnut-container" id="doughnut-bg"></div> 
-    <div class="top-glow"></div>
-    <div class="vignette"></div>
+    <!-- DELICATE TACTILE NOISE TEXTURE -->
+    <div class="fixed inset-0 pointer-events-none z-[9998] opacity-[0.03] mix-blend-multiply" style="background-image: url(&quot;data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E&quot;);"></div>
 
-    <main id="main-content" class="w-full h-full flex flex-col items-center justify-center p-4 relative z-10">
-        
-        <!-- Logo Section (Optimized for local storage) -->
-        <div class="entrance-pop flex flex-col items-center mb-6 md:mb-10 animate-logo">
-            <div class="inline-block cursor-pointer mb-2 transform hover:scale-105 transition duration-300">
-                <!-- Directly pointing to local logo and using fetchpriority for speed -->
-                <img src="images/logo.png" 
-                     alt="The Mini Doughnut Company" 
-                     class="w-32 h-32 md:w-48 md:h-48 object-contain rounded-full relative z-10"
-                     fetchpriority="high"
-                     loading="eager">
+    <!-- --- FLOATING GLASS HEADER --- -->
+    <header class="fixed top-0 left-0 w-full z-[100] px-4 py-4 md:py-6 transition-all duration-500 pointer-events-none page-enter">
+        <div class="max-w-7xl mx-auto flex justify-between items-center glass-panel rounded-full px-6 py-3 md:px-8 md:py-4 pointer-events-auto transition-transform duration-300 hover:scale-[1.01]">
+            <div class="flex items-center gap-3 font-playful font-bold text-xl md:text-2xl text-[#e91374] group cursor-pointer" aria-label="Home">
+                <svg viewBox="0 0 100 100" class="w-8 h-8 md:w-10 md:h-10 transition-transform duration-700 ease-out group-hover:rotate-[25deg] group-hover:scale-110 drop-shadow-sm" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="50" cy="50" r="38" stroke="#e91374" stroke-width="18" />
+                    <circle cx="50" cy="50" r="14" fill="transparent" />
+                    <path d="M 20 40 Q 30 10 60 20" stroke="white" stroke-width="4" stroke-linecap="round" opacity="0.6" fill="none" />
+                    <path d="M 30 25 L 40 20" stroke="white" stroke-width="3" stroke-linecap="round" transform="rotate(20 35 22.5)" />
+                    <path d="M 60 20 L 70 25" stroke="#3fb7e9" stroke-width="3" stroke-linecap="round" transform="rotate(-30 65 22.5)" />
+                    <path d="M 80 45 L 85 55" stroke="white" stroke-width="3" stroke-linecap="round" transform="rotate(45 82.5 50)" />
+                    <path d="M 75 75 L 85 70" stroke="#3fb7e9" stroke-width="3" stroke-linecap="round" transform="rotate(-15 80 72.5)" />
+                    <path d="M 45 80 L 55 85" stroke="white" stroke-width="3" stroke-linecap="round" transform="rotate(60 50 82.5)" />
+                    <path d="M 20 65 L 15 55" stroke="#3fb7e9" stroke-width="3" stroke-linecap="round" transform="rotate(-40 17.5 60)" />
+                    <path d="M 15 35 L 25 30" stroke="white" stroke-width="3" stroke-linecap="round" transform="rotate(10 20 32.5)" />
+                </svg>
+                <span class="hidden sm:inline tracking-tight">The Mini Doughnut Co.</span>
             </div>
-            <h2 class="font-bubbly text-2xl md:text-3xl mt-4 text-white text-center leading-none cartoon-text-sm">
-                The Mini Doughnut Company
-            </h2>
+            <nav class="hidden md:flex gap-10 font-bold text-slate-800 text-lg" aria-label="Main Navigation">
+                <a href="#experience" class="hover:text-[#e91374] transition-colors relative group">
+                    Experience
+                    <span class="absolute -bottom-1 left-0 w-0 h-[2px] bg-[#e91374] transition-all duration-300 group-hover:w-full"></span>
+                </a>
+                <a href="#events" class="hover:text-[#3fb7e9] transition-colors relative group">
+                    Events
+                    <span class="absolute -bottom-1 left-0 w-0 h-[2px] bg-[#3fb7e9] transition-all duration-300 group-hover:w-full"></span>
+                </a>
+                <button class="open-menu-btn hover:text-[#f59e0b] transition-colors cursor-pointer font-bold relative group" aria-haspopup="dialog" aria-expanded="false">
+                    Menu
+                    <span class="absolute -bottom-1 left-0 w-0 h-[2px] bg-[#f59e0b] transition-all duration-300 group-hover:w-full"></span>
+                </button>
+            </nav>
+            <button class="magnetic-button bg-[#3fb7e9] text-white px-8 py-2.5 rounded-full font-playful text-xl shadow-[0_4px_15px_rgba(63,183,233,0.4)] hover:shadow-[0_2px_5px_rgba(63,183,233,0.4)] hover:translate-y-[2px] active:shadow-none active:translate-y-[4px] transition-all border border-white/20">
+                Book Now
+            </button>
         </div>
+    </header>
 
-        <!-- Hero Text Stack -->
-        <div class="flex flex-col items-center justify-center relative select-none">
+    <!-- --- SECTION 1: CINEMATIC IMMERSIVE HERO --- -->
+    <main>
+        <section id="hero" class="relative w-full min-h-[100vh] bg-[#3fb7e9] flex flex-col items-center justify-center pt-32 pb-48 md:pb-64 px-6 overflow-hidden">
             
-            <div class="relative entrance-pop delay-100 anim-float">
-                <canvas id="steam-canvas" width="300" height="400"></canvas>
-                <h1 class="font-bubbly text-6xl sm:text-7xl md:text-9xl pop-text text-hot transform -rotate-3 leading-none">
-                    HOT
-                </h1>
-            </div>
-
-            <div class="entrance-pop delay-200 anim-float-delayed relative -mt-2 md:-mt-4">
-                <h1 class="font-bubbly text-6xl sm:text-7xl md:text-9xl pop-text text-fresh transform rotate-2 leading-none">
-                    FRESH
-                </h1>
-            </div>
-
-            <div class="entrance-pop delay-300 relative -mt-2 md:-mt-4">
-                <h1 class="font-bubbly text-5xl sm:text-7xl md:text-9xl pop-text text-doughnuts anim-pulse leading-none">
-                    DOUGHNUTS!
-                </h1>
-            </div>
-
-        </div>
-
-        <!-- CTA Section -->
-        <div class="mt-10 md:mt-16 entrance-pop delay-300 flex flex-col items-center">
-            <a href="mailto:info@theminidoughnutcompany.com" 
-               class="pink-email-btn px-6 py-3 md:px-10 md:py-5 text-base sm:text-lg md:text-2xl font-bold rounded-full inline-flex items-center">
-                <span class="mr-2 text-xl md:text-2xl">📧</span>
-                <span class="truncate">info@theminidoughnutcompany.com</span>
-            </a>
+            <!-- Elegant Dotted Texture -->
+            <div class="absolute inset-0 opacity-[0.08] z-0 mix-blend-overlay" style="background-image: radial-gradient(#ffffff 2px, transparent 2px); background-size: 30px 30px;"></div>
             
-            <footer class="mt-8 text-blue-900 opacity-50 text-xs md:text-sm font-bold tracking-wide uppercase">
-                &copy; <script>document.write(new Date().getFullYear())</script> The Mini Doughnut Company
-            </footer>
-        </div>
+            <!-- Sophisticated Pastel Mesh Gradient Background -->
+            <div class="absolute top-[-20%] left-[-10%] w-[60vw] h-[60vw] bg-[#a8efff] rounded-full mix-blend-screen filter blur-[120px] opacity-70 animate-blob z-0"></div>
+            <div class="absolute bottom-[-10%] right-[-10%] w-[70vw] h-[70vw] bg-[#1a9ad0] rounded-full mix-blend-multiply filter blur-[140px] opacity-60 animate-blob animation-delay-2000 z-0"></div>
+            <div class="absolute top-[20%] right-[20%] w-[50vw] h-[50vw] bg-[#fce7f3] rounded-full mix-blend-overlay filter blur-[100px] opacity-50 animate-blob animation-delay-4000 z-0"></div>
 
+            <!-- --- HIGHLY DETAILED 3D PARALLAX ARTWORK --- -->
+            <!-- Background (Small, Slow) -->
+            <div class="absolute inset-0 z-0 pointer-events-none transition-transform duration-1000 ease-out parallax flex justify-end items-start" data-factor="-0.06">
+                <div class="w-[12vw] max-w-[120px] min-w-[70px] transform translate-y-[30vh] -translate-x-[20vw] rotate-[45deg] opacity-70 blur-[4px]">
+                    <!-- 3D Small Vanilla Doughnut -->
+                    <svg viewBox="0 0 120 120" class="w-full h-auto drop-shadow-xl animate-float-slow" aria-hidden="true">
+                        <defs>
+                            <radialGradient id="doughSmall" cx="35%" cy="30%" r="70%">
+                                <stop offset="0%" stop-color="#fcefb4"/><stop offset="60%" stop-color="#e2ae52"/><stop offset="100%" stop-color="#a86e1b"/>
+                            </radialGradient>
+                            <radialGradient id="vanillaIcing" cx="40%" cy="30%" r="60%">
+                                <stop offset="0%" stop-color="#ffffff"/><stop offset="60%" stop-color="#fef3c7"/><stop offset="100%" stop-color="#d4b886"/>
+                            </radialGradient>
+                            <filter id="lightShadow"><feDropShadow dx="1" dy="3" stdDeviation="2" flood-opacity="0.2"/></filter>
+                        </defs>
+                        <path d="M60 12 C86 12 108 34 108 60 C108 86 86 108 60 108 C34 108 12 86 12 60 C12 34 34 12 60 12 Z M60 42 C50 42 42 50 42 60 C42 70 50 78 60 78 C70 78 78 70 78 60 C78 50 70 42 60 42 Z" fill="url(#doughSmall)"/>
+                        <path d="M60 15 C83 15 102 33 104 55 C105 65 99 78 92 82 C86 85 82 78 76 76 C70 74 65 82 59 80 C53 78 49 72 43 75 C37 78 33 72 27 68 C22 65 16 55 16 55 C16 33 35 15 60 15 Z M60 39 C48 39 39 48 39 60 C39.5 67 45 73 52 74 C58 75 64 71 71 72 C77 73 81 67 81 60 C81 48 72 39 60 39 Z" fill="url(#vanillaIcing)" filter="url(#lightShadow)"/>
+                    </svg>
+                </div>
+            </div>
+            <div class="absolute inset-0 z-0 pointer-events-none transition-transform duration-1000 ease-out parallax flex justify-start items-end" data-factor="-0.08">
+                <div class="w-[4vw] max-w-[35px] min-w-[20px] transform translate-x-[25vw] -translate-y-[25vh] rotate-[-25deg] opacity-80 blur-[2px]">
+                    <!-- Giant Floating Yellow Sprinkle -->
+                    <svg viewBox="0 0 30 100" class="w-full h-auto drop-shadow-lg animate-float-slower" aria-hidden="true">
+                        <defs>
+                            <linearGradient id="sprinkleYellow" x1="0%" y1="0%" x2="100%" y2="0%">
+                                <stop offset="0%" stop-color="#fef08a"/><stop offset="40%" stop-color="#facc15"/><stop offset="80%" stop-color="#eab308"/><stop offset="100%" stop-color="#a16207"/>
+                            </linearGradient>
+                            <linearGradient id="sprinkleYellowGlow" x1="0%" y1="0%" x2="0%" y2="100%">
+                                <stop offset="0%" stop-color="white" stop-opacity="0.9"/><stop offset="40%" stop-color="white" stop-opacity="0.2"/><stop offset="100%" stop-color="white" stop-opacity="0"/>
+                            </linearGradient>
+                        </defs>
+                        <rect x="4" y="4" width="22" height="92" rx="11" fill="url(#sprinkleYellow)" />
+                        <rect x="7" y="7" width="6" height="86" rx="3" fill="url(#sprinkleYellowGlow)" />
+                    </svg>
+                </div>
+            </div>
+
+            <!-- Midground (In Focus, Rich Details) -->
+            <div class="absolute inset-0 z-10 pointer-events-none transition-transform duration-1000 ease-out parallax flex justify-start items-center" data-factor="0.12">
+                <div class="w-[18vw] max-w-[200px] min-w-[120px] transform translate-x-[10vw] -translate-y-[15vh] rotate-[15deg] opacity-100 blur-[8px]">
+                    <!-- 3D Chocolate Drizzle Doughnut -->
+                    <svg viewBox="0 0 120 120" class="w-full h-auto drop-shadow-[0_25px_35px_rgba(0,0,0,0.25)] animate-float-slow" aria-hidden="true">
+                        <defs>
+                            <radialGradient id="doughMid" cx="35%" cy="30%" r="70%">
+                                <stop offset="0%" stop-color="#ffe4a0"/><stop offset="60%" stop-color="#d69b3e"/><stop offset="100%" stop-color="#9c6314"/>
+                            </radialGradient>
+                            <radialGradient id="chocIcing" cx="40%" cy="30%" r="60%">
+                                <stop offset="0%" stop-color="#6e4228"/><stop offset="60%" stop-color="#3d2110"/><stop offset="100%" stop-color="#1f0f06"/>
+                            </radialGradient>
+                            <filter id="chocShadow"><feDropShadow dx="2" dy="5" stdDeviation="4" flood-opacity="0.4"/></filter>
+                            <filter id="glowSubtle"><feGaussianBlur stdDeviation="1.5" result="coloredBlur"/><feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+                        </defs>
+                        <!-- Dough -->
+                        <path d="M60 10 C87.6 10 110 32.4 110 60 C110 87.6 87.6 110 60 110 C32.4 110 10 87.6 10 60 C10 32.4 32.4 10 60 10 Z M60 40 C49 40 40 49 40 60 C40 71 49 80 60 80 C71 80 80 71 80 60 C80 49 71 40 60 40 Z" fill="url(#doughMid)"/>
+                        <!-- Chocolate Frosting with dripping edges -->
+                        <path d="M60 13 C85 13 105 32 107 55 C108 65 106 78 102 85 C97 94 92 88 88 82 C84 76 80 85 75 88 C70 91 65 84 62 82 C58 80 54 88 50 92 C45 97 40 88 35 84 C30 80 25 88 20 85 C14 80 13 65 13 55 C13 32 35 13 60 13 Z M60 37 C47 37 37 47 38 60 C38.5 67 45 73 52 74 C58 75 65 71 72 72 C78 73 82 67 82 60 C82 47 73 37 60 37 Z" fill="url(#chocIcing)" filter="url(#chocShadow)"/>
+                        <!-- Vanilla/Caramel Drizzle Lines -->
+                        <path d="M18 45 Q 35 25 45 55 T 75 35 T 105 60 T 85 85" fill="none" stroke="#fcefb4" stroke-width="2.5" stroke-linecap="round" filter="url(#chocShadow)"/>
+                        <path d="M25 65 Q 40 40 55 70 T 85 50 T 100 75" fill="none" stroke="#fcefb4" stroke-width="2" stroke-linecap="round" filter="url(#chocShadow)"/>
+                        <!-- Glossy spec reflection -->
+                        <path d="M35 25 C50 15 70 18 85 30" fill="none" stroke="white" stroke-width="4" stroke-linecap="round" opacity="0.3" filter="url(#glowSubtle)"/>
+                    </svg>
+                </div>
+            </div>
+            <div class="absolute inset-0 z-10 pointer-events-none transition-transform duration-1000 ease-out parallax flex justify-end items-end" data-factor="0.15">
+                <div class="w-[5vw] max-w-[40px] min-w-[25px] transform -translate-x-[20vw] -translate-y-[20vh] rotate-[-35deg] opacity-90">
+                    <!-- Giant Floating Cyan Sprinkle -->
+                    <svg viewBox="0 0 30 100" class="w-full h-auto drop-shadow-[0_20px_25px_rgba(0,0,0,0.15)] animate-float-slower" aria-hidden="true">
+                        <defs>
+                            <linearGradient id="sprinkleCyan" x1="0%" y1="0%" x2="100%" y2="0%">
+                                <stop offset="0%" stop-color="#a8efff"/><stop offset="40%" stop-color="#3fb7e9"/><stop offset="80%" stop-color="#0284c7"/><stop offset="100%" stop-color="#0c4a6e"/>
+                            </linearGradient>
+                            <linearGradient id="sprinkleCyanGlow" x1="0%" y1="0%" x2="0%" y2="100%">
+                                <stop offset="0%" stop-color="white" stop-opacity="0.9"/><stop offset="40%" stop-color="white" stop-opacity="0.3"/><stop offset="100%" stop-color="white" stop-opacity="0"/>
+                            </linearGradient>
+                        </defs>
+                        <rect x="4" y="4" width="22" height="92" rx="11" fill="url(#sprinkleCyan)" />
+                        <rect x="7" y="7" width="6" height="86" rx="3" fill="url(#sprinkleCyanGlow)" />
+                    </svg>
+                </div>
+            </div>
+
+            <!-- Foreground (Sharp, Fast, Giant) -->
+            <div class="absolute inset-0 z-10 pointer-events-none transition-transform duration-1000 ease-out parallax flex items-end justify-start" data-factor="0.25">
+                <div class="w-[35vw] max-w-[400px] min-w-[200px] transform -translate-x-[15%] translate-y-[10%] rotate-[-20deg] opacity-100">
+                    <!-- Giant 3D Pink Frosted Doughnut w/ Sprinkles -->
+                    <svg viewBox="0 0 120 120" class="w-full h-auto animate-float-slow" aria-hidden="true">
+                        <defs>
+                            <radialGradient id="doughBig" cx="30%" cy="30%" r="70%">
+                                <stop offset="0%" stop-color="#fcefb4"/><stop offset="60%" stop-color="#e2ae52"/><stop offset="100%" stop-color="#a86e1b"/>
+                            </radialGradient>
+                            <radialGradient id="pinkIcing" cx="40%" cy="30%" r="60%">
+                                <stop offset="0%" stop-color="#ff99c8"/><stop offset="50%" stop-color="#e91374"/><stop offset="100%" stop-color="#91003f"/>
+                            </radialGradient>
+                            <filter id="sprinkleShadow"><feDropShadow dx="1" dy="2" stdDeviation="1" flood-opacity="0.5"/></filter>
+                            <filter id="glossGlow"><feGaussianBlur stdDeviation="2" result="coloredBlur"/><feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+                        </defs>
+                        <!-- Dough -->
+                        <path d="M60 8 C88 8 112 32 112 60 C112 88 88 112 60 112 C32 112 8 88 8 60 C8 32 32 8 60 8 Z M60 38 C48 38 38 48 38 60 C38 72 48 82 60 82 C72 82 82 72 82 60 C82 48 72 38 60 38 Z" fill="url(#doughBig)"/>
+                        <!-- Pink Frosting -->
+                        <path d="M60 12 C86 12 106 32 108 58 C108.5 70 102 85 94 88 C87 90 84 82 77 80 C70 78 67 86 60 85 C53 84 50 78 42 82 C34 86 30 80 24 75 C18 70 16 58 16 58 C16 32 34 12 60 12 Z M60 36 C47 36 37 46 38 59 C38.5 66 45 72 52 73 C58 74 65 70 72 71 C78 72 82 66 82 59 C82 46 73 36 60 36 Z" fill="url(#pinkIcing)"/>
+                        <!-- 3D Sprinkles Scattered -->
+                        <rect x="50" y="25" width="10" height="4" rx="2" fill="#3fb7e9" transform="rotate(30 55 27)" filter="url(#sprinkleShadow)"/>
+                        <rect x="75" y="35" width="10" height="4" rx="2" fill="#fcefb4" transform="rotate(-45 80 37)" filter="url(#sprinkleShadow)"/>
+                        <rect x="30" y="55" width="10" height="4" rx="2" fill="#ffffff" transform="rotate(70 35 57)" filter="url(#sprinkleShadow)"/>
+                        <rect x="85" y="60" width="10" height="4" rx="2" fill="#10b981" transform="rotate(-15 90 62)" filter="url(#sprinkleShadow)"/>
+                        <rect x="55" y="75" width="10" height="4" rx="2" fill="#3fb7e9" transform="rotate(10 60 77)" filter="url(#sprinkleShadow)"/>
+                        <rect x="25" y="40" width="10" height="4" rx="2" fill="#f59e0b" transform="rotate(-30 30 42)" filter="url(#sprinkleShadow)"/>
+                        <!-- Glossy highlight on pink icing -->
+                        <path d="M30 28 C45 15 75 16 90 32" fill="none" stroke="white" stroke-width="5" stroke-linecap="round" opacity="0.4" filter="url(#glossGlow)"/>
+                    </svg>
+                </div>
+            </div>
+            <div class="absolute inset-0 z-10 pointer-events-none transition-transform duration-1000 ease-out parallax flex justify-end items-start" data-factor="0.2">
+                <div class="w-[6vw] max-w-[45px] min-w-[30px] transform translate-x-[20%] -translate-y-[10%] rotate-[40deg] blur-[4px] opacity-85">
+                    <!-- Giant Floating Pink Sprinkle -->
+                    <svg viewBox="0 0 30 100" class="w-full h-auto drop-shadow-2xl animate-float-slower" aria-hidden="true">
+                        <defs>
+                            <linearGradient id="sprinklePink" x1="0%" y1="0%" x2="100%" y2="0%">
+                                <stop offset="0%" stop-color="#fbcfe8"/><stop offset="40%" stop-color="#e91374"/><stop offset="80%" stop-color="#9d174d"/><stop offset="100%" stop-color="#4c0519"/>
+                            </linearGradient>
+                            <linearGradient id="sprinklePinkGlow" x1="0%" y1="0%" x2="0%" y2="100%">
+                                <stop offset="0%" stop-color="white" stop-opacity="0.9"/><stop offset="40%" stop-color="white" stop-opacity="0.3"/><stop offset="100%" stop-color="white" stop-opacity="0"/>
+                            </linearGradient>
+                        </defs>
+                        <rect x="4" y="4" width="22" height="92" rx="11" fill="url(#sprinklePink)" />
+                        <rect x="7" y="7" width="6" height="86" rx="3" fill="url(#sprinklePinkGlow)" />
+                    </svg>
+                </div>
+            </div>
+
+            <!-- --- ARTISTIC TYPOGRAPHY LOCKUP --- -->
+            <div class="max-w-5xl mx-auto w-full text-center relative z-30 flex flex-col items-center mt-20 page-enter delay-100">
+                
+                <div class="relative w-full flex flex-col items-center">
+                    
+                    <!-- Handwritten Accent -->
+                    <span class="font-handwritten text-[#fcefb4] text-5xl md:text-6xl lg:text-7xl mb-6 md:mb-8 transform -rotate-3 opacity-100 drop-shadow-[0_10px_20px_rgba(0,0,0,0.6)]">
+                        The sweetest part of any party.
+                    </span>
+                    
+                    <!-- Elegant Massive Headline -->
+                    <h1 class="text-[6rem] md:text-[9rem] lg:text-[11rem] font-playful font-black leading-[0.8] tracking-[-0.04em] relative flex flex-col items-center z-20 w-full page-enter delay-200">
+                        <span class="relative z-10 text-white drop-shadow-[0_8px_15px_rgba(0,0,0,0.2)]">Made Fresh.</span>
+                        <span class="relative z-20 text-[#e91374] mt-2 md:-mt-6 transform -rotate-2 hover:rotate-0 hover:scale-[1.02] transition-all duration-700 ease-out drop-shadow-[4px_4px_0_rgba(255,255,255,1)] md:drop-shadow-[8px_8px_0_rgba(255,255,255,1)]">
+                            Right Now.
+                        </span>
+                    </h1>
+                </div>
+                
+                <p class="text-xl md:text-2xl text-white mt-12 mb-16 max-w-3xl mx-auto font-bold leading-relaxed drop-shadow-md z-20 page-enter delay-300">
+                    The Mini Doughnut Company serves hot, fresh made-to-order mini doughnuts at markets, festivals, school celebrations, private events, and corporate gatherings across Southern California.
+                </p>
+                
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-6 w-full sm:w-auto relative z-30 page-enter delay-300">
+                    <button class="magnetic-button font-playful text-2xl px-12 py-5 bg-[#e91374] text-white rounded-full flex items-center justify-center gap-3 w-full sm:w-auto shadow-[0_10px_20px_rgba(233,19,116,0.6)] border border-pink-400 hover:shadow-[0_5px_10px_rgba(233,19,116,0.8)] hover:translate-y-[5px] active:shadow-none active:translate-y-[10px] transition-all relative group overflow-hidden">
+                        <span class="relative z-10 flex items-center gap-3 tracking-wide"><span aria-hidden="true">🍩</span> Book Your Event</span>
+                    </button>
+                    <button class="magnetic-button font-playful text-xl px-12 py-5 bg-white text-[#3fb7e9] rounded-full flex items-center justify-center gap-3 w-full sm:w-auto shadow-[0_10px_20px_rgba(0,0,0,0.2)] border-2 border-white hover:shadow-[0_5px_10px_rgba(0,0,0,0.3)] hover:translate-y-[5px] active:shadow-none active:translate-y-[10px] transition-all relative group overflow-hidden">
+                        <span class="absolute inset-0 bg-[#3fb7e9]/10 translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out"></span>
+                        <span class="relative z-10 flex items-center gap-2 tracking-wide font-black">📍 See Where We'll Be</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- --- REFINED ARTISTIC GLAZE WAVE --- -->
+            <div class="absolute bottom-0 left-0 w-full overflow-hidden leading-none z-20 pointer-events-none translate-y-[2px]">
+                <!-- Subtle back shadow wave for deeper 3D thickness -->
+                <svg class="absolute bottom-0 left-0 w-full h-[60px] md:h-[120px] opacity-100 drop-shadow-lg" preserveAspectRatio="none" viewBox="0 0 1200 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <path d="M0,0 V46.29 c47.79,22.2,103.59,32.17,158,28, 70.36-5.37,136.33-33.31,206.8-37.5 C438.64,32.43,512.34,53.67,583,72.05 c69.27,18,138.3,24.88,209.4,13.08, 36.15-6,69.85-17.84,104.45-29.34 C989.49,25,1113-14.29,1200,52.47 V120 H0 Z" fill="#fbcfe8" transform="translate(0, 18)"></path>
+                </svg>
+                <!-- Crisp front wave -->
+                <svg class="relative block w-full h-[40px] md:h-[90px] drop-shadow-[0_-10px_25px_rgba(0,0,0,0.08)]" preserveAspectRatio="none" viewBox="0 0 1200 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <path d="M0,0 V46.29 c47.79,22.2,103.59,32.17,158,28, 70.36-5.37,136.33-33.31,206.8-37.5 C438.64,32.43,512.34,53.67,583,72.05 c69.27,18,138.3,24.88,209.4,13.08, 36.15-6,69.85-17.84,104.45-29.34 C989.49,25,1113-14.29,1200,52.47 V120 H0 Z" fill="#fffafb"></path>
+                </svg>
+            </div>
+        </section>
+
+        <!-- --- SECTION 2: THE EDITORIAL EXPERIENCE --- -->
+        <section id="experience" class="relative w-full py-16 lg:py-24 min-h-screen flex items-center px-6 z-10 overflow-hidden">
+            <!-- Sprinkles Background Container -->
+            <div id="sprinkles-container" class="absolute inset-0 overflow-hidden pointer-events-none z-0 opacity-30 mix-blend-multiply" aria-hidden="true"></div>
+            
+            <div class="max-w-7xl mx-auto w-full flex flex-col lg:flex-row items-center gap-20 relative z-10">
+                <div class="lg:w-1/2 text-left relative z-10 reveal">
+                    <div class="inline-block bg-[#f0f9fd] text-[#3fb7e9] font-bold px-6 py-3 rounded-full mb-10 font-playful transform -rotate-2 shadow-sm border border-[#3fb7e9]/15 hover:rotate-0 transition-transform cursor-default tracking-wide">
+                        <i data-lucide="star" class="inline mr-2 -mt-1" width="16" height="16" aria-hidden="true"></i>
+                        The Magic Moment
+                    </div>
+                    <h2 class="text-[4rem] md:text-[5.5rem] font-playful font-black text-slate-800 mb-8 leading-[0.85] tracking-tight drop-shadow-sm">
+                        Tiny Doughnuts.<br/>
+                        <span class="text-[#e91374] relative inline-block mt-4">
+                            Big Smiles.
+                            <svg class="absolute w-[105%] h-5 -bottom-1 -left-1 text-[#fbcfe8] -z-10" viewBox="0 0 100 20" preserveAspectRatio="none" aria-hidden="true"><path d="M0 10 Q 50 25 100 5" stroke="currentColor" stroke-width="12" fill="none" stroke-linecap="round"/></svg>
+                        </span>
+                    </h2>
+                    <p class="text-2xl text-slate-500 mb-10 leading-relaxed font-light">
+                        There’s something special about watching mini doughnuts drop, flip, and turn perfectly golden before being tossed and topped just the way you like.
+                    </p>
+                    <p class="font-handwritten text-[2.75rem] text-[#3fb7e9] transform rotate-2 animate-float opacity-90 cursor-default drop-shadow-sm">
+                        It's literally mesmerizing...
+                    </p>
+                </div>
+                
+                <div class="lg:w-1/2 relative w-full aspect-square flex items-center justify-center mt-16 lg:mt-0 reveal reveal-delay-200">
+                    
+                    <!-- Circling Text Badge -->
+                    <div class="absolute -bottom-8 -left-4 md:-bottom-12 md:-left-12 w-[120%] h-[120%] z-0 flex items-center justify-center pointer-events-none opacity-80 mix-blend-multiply" aria-hidden="true">
+                        <div class="absolute inset-0 animate-spin-slow-reverse origin-center scale-[0.85] md:scale-95">
+                            <svg viewBox="0 0 200 200" width="100%" height="100%" class="overflow-visible">
+                                <path id="curve" fill="transparent" d="M 100, 100 m -95, 0 a 95,95 0 1,1 190,0 a 95,95 0 1,1 -190,0" />
+                                <text class="font-playful font-black text-[18px] uppercase" fill="#3fb7e9" letter-spacing="4.5">
+                                    <textPath href="#curve" startOffset="0%">Hot & Fresh • Made to Order • Hot & Fresh •</textPath>
+                                </text>
+                            </svg>
+                        </div>
+                    </div>
+
+                    <!-- Morphing Blob Mask Image -->
+                    <div class="relative w-[95%] h-[95%] lg:w-full lg:h-full blob-morph-container z-20 group bg-white">
+                        <img 
+                            src="https://images.unsplash.com/photo-1551024506-0bccd828d307?auto=format&fit=crop&q=80&w=1000" 
+                            alt="Live doughnut making showing freshly cooked mini doughnuts" 
+                            class="w-full h-full object-cover blob-morph-image transition-transform duration-1000 ease-out group-hover:scale-110"
+                            loading="lazy"
+                            decoding="async"
+                        />
+                        <!-- Subtle Warm Overlay -->
+                        <div class="absolute inset-0 bg-gradient-to-tr from-[#e91374]/10 to-[#fcefb4]/10 mix-blend-overlay pointer-events-none"></div>
+                    </div>
+                    
+                    <!-- Decorative Offset Glowing Blobs -->
+                    <div class="absolute -top-10 -right-10 w-80 h-80 bg-[#a8efff] mix-blend-multiply opacity-30 rounded-full filter blur-[60px] animate-blob z-0" aria-hidden="true"></div>
+                    <div class="absolute -bottom-10 -left-10 w-80 h-80 bg-[#fbcfe8] mix-blend-multiply opacity-40 rounded-full filter blur-[60px] animate-blob animation-delay-2000 z-0" aria-hidden="true"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- --- SECTION 3: SCATTERED SERVICES --- -->
+        <section id="events" class="w-full bg-gradient-to-b from-[#fdf2f6] to-[#fff5f8] py-16 lg:py-24 min-h-screen flex items-center justify-center px-6 relative overflow-hidden border-y-[10px] border-dotted border-[#fbcfe8]">
+            
+            <!-- Subtle Giant Background Text -->
+            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[18rem] md:text-[28rem] font-playful font-black text-[#fce4ee] whitespace-nowrap opacity-50 pointer-events-none select-none tracking-tighter mix-blend-multiply" aria-hidden="true">
+                EVENTS
+            </div>
+
+            <!-- Artistic Frosting Trail SVG -->
+            <svg class="absolute top-[40%] left-0 w-full h-[400px] hidden md:block z-0 pointer-events-none opacity-60" viewBox="0 0 1200 400" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" aria-hidden="true">
+                <path d="M -50 200 C 200 -50, 400 450, 600 200 C 800 -50, 1000 450, 1250 200" stroke="#fbcfe8" stroke-width="8" stroke-dasharray="16 20" stroke-linecap="round" />
+            </svg>
+
+            <div class="max-w-7xl mx-auto w-full relative z-10">
+                <div class="text-center mb-24 md:mb-32 relative reveal">
+                    <span class="absolute -top-16 left-1/2 transform -translate-x-1/2 font-handwritten text-[#3fb7e9] bg-white px-8 py-3 rounded-sm text-5xl -rotate-6 animate-wiggle sticker-shadow z-20">
+                        Invite us!
+                    </span>
+                    <h2 class="text-[4.5rem] md:text-7xl font-playful font-black text-slate-800 mb-6 drop-shadow-sm relative z-10 tracking-tight">
+                        We Bring the Fun To...
+                    </h2>
+                </div>
+
+                <div class="flex flex-col md:flex-row justify-center items-center gap-12 md:gap-10 h-auto relative">
+                    
+                    <!-- Service Card 1 -->
+                    <div class="relative w-full md:w-[380px] p-12 glass-panel rounded-[3rem] transition-all duration-700 transform -rotate-6 md:-rotate-12 md:-translate-y-8 md:hover:-translate-y-16 hover:rotate-[-8deg] hover:z-30 group cursor-pointer hover:shadow-[0_30px_60px_rgba(63,183,233,0.15)] reveal-zoom reveal-delay-100">
+                        <div class="w-24 h-24 rounded-[2rem] flex items-center justify-center mb-10 text-white shadow-lg transform transition-transform duration-500 group-hover:scale-110 group-hover:rotate-[15deg] bg-gradient-to-br from-[#5cd0ff] to-[#3fb7e9]">
+                            <i data-lucide="graduation-cap" width="44" height="44" aria-hidden="true"></i>
+                        </div>
+                        <h3 class="text-4xl font-playful font-black text-slate-800 tracking-tight mb-5">Schools</h3>
+                        <p class="text-slate-500 font-medium text-xl leading-relaxed">Perfect for fundraisers, graduations, and teacher appreciation days. Guaranteed smiles.</p>
+                    </div>
+
+                    <!-- Service Card 2 -->
+                    <div class="relative w-full md:w-[380px] p-12 glass-panel rounded-[3rem] transition-all duration-700 transform rotate-3 md:rotate-6 z-10 md:translate-y-16 md:hover:translate-y-6 scale-105 hover:rotate-[4deg] hover:z-30 group cursor-pointer hover:shadow-[0_30px_60px_rgba(233,19,116,0.15)] reveal-zoom reveal-delay-200">
+                        <div class="w-24 h-24 rounded-[2rem] flex items-center justify-center mb-10 text-white shadow-lg transform transition-transform duration-500 group-hover:scale-110 group-hover:rotate-[15deg] bg-gradient-to-br from-[#ff6baf] to-[#e91374]">
+                            <i data-lucide="party-popper" width="44" height="44" aria-hidden="true"></i>
+                        </div>
+                        <h3 class="text-4xl font-playful font-black text-slate-800 tracking-tight mb-5">Private Events</h3>
+                        <p class="text-slate-500 font-medium text-xl leading-relaxed">Birthdays, weddings, and backyard parties. We make your special day a little sweeter.</p>
+                    </div>
+
+                    <!-- Service Card 3 -->
+                    <div class="relative w-full md:w-[380px] p-12 glass-panel rounded-[3rem] transition-all duration-700 transform rotate-6 md:-rotate-6 md:-translate-y-12 md:hover:-translate-y-20 hover:rotate-[-4deg] hover:z-30 group cursor-pointer hover:shadow-[0_30px_60px_rgba(245,158,11,0.15)] reveal-zoom reveal-delay-300">
+                        <div class="w-24 h-24 rounded-[2rem] flex items-center justify-center mb-10 text-white shadow-lg transform transition-transform duration-500 group-hover:scale-110 group-hover:rotate-[15deg] bg-gradient-to-br from-[#fbbf24] to-[#f59e0b]">
+                            <i data-lucide="building-2" width="44" height="44" aria-hidden="true"></i>
+                        </div>
+                        <h3 class="text-4xl font-playful font-black text-slate-800 tracking-tight mb-5">Corporate</h3>
+                        <p class="text-slate-500 font-medium text-xl leading-relaxed">Employee appreciations, product launches, and team-building treats done right.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- --- SECTION 4: MULTI-LAYERED KINETIC FLAVOR MARQUEE --- -->
+        <section id="menu" class="w-full bg-[#3fb7e9] py-16 lg:py-24 flex flex-col justify-center overflow-hidden relative shadow-inner">
+            <!-- Delicate background pattern -->
+            <div class="absolute inset-0 opacity-15" style="background-image: radial-gradient(circle, #ffffff 2px, transparent 2px); background-size: 30px 30px;" aria-hidden="true"></div>
+            
+            <div class="text-center mb-8 md:mb-12 relative z-10 mt-5 md:mt-0 reveal">
+                <h2 class="text-6xl md:text-[5.5rem] font-playful font-black text-white drop-shadow-[0_4px_10px_rgba(0,0,0,0.15)] tracking-tight">
+                    Crowd Favorites
+                </h2>
+                <p class="font-handwritten text-[3rem] text-[#fcefb4] transform rotate-3 mt-4 drop-shadow-sm">
+                    Warning: Highly addictive!
+                </p>
+            </div>
+
+            <!-- Premium Multi-layered Infinite Scrolling Marquees -->
+            <div class="relative transform -rotate-3 scale-[1.05] shadow-2xl my-5 reveal reveal-delay-100" aria-hidden="true">
+                <!-- Top Marquee -->
+                <div class="flex overflow-x-hidden bg-white/10 py-8 border-y border-white/30 backdrop-blur-md">
+                    <div class="animate-marquee whitespace-nowrap flex items-center">
+                        <div class="flex items-center mx-12"><i data-lucide="star" class="text-white/80 mr-12" width="44" height="44" fill="currentColor"></i><span class="font-playful font-black whitespace-nowrap drop-shadow-lg text-7xl md:text-[8rem] text-white tracking-tight">Cinnamon Sugar</span></div>
+                        <div class="flex items-center mx-12"><i data-lucide="star" class="text-white/80 mr-12" width="44" height="44" fill="currentColor"></i><span class="font-playful font-black whitespace-nowrap drop-shadow-lg text-7xl md:text-[8rem] text-white tracking-tight">Chocolate Drizzle</span></div>
+                        <div class="flex items-center mx-12"><i data-lucide="star" class="text-white/80 mr-12" width="44" height="44" fill="currentColor"></i><span class="font-playful font-black whitespace-nowrap drop-shadow-lg text-7xl md:text-[8rem] text-white tracking-tight">Birthday Cake</span></div>
+                        <div class="flex items-center mx-12"><i data-lucide="star" class="text-white/80 mr-12" width="44" height="44" fill="currentColor"></i><span class="font-playful font-black whitespace-nowrap drop-shadow-lg text-7xl md:text-[8rem] text-white tracking-tight">Powdered Sugar</span></div>
+                        <!-- Duplicates for seamless loop -->
+                        <div class="flex items-center mx-12"><i data-lucide="star" class="text-white/80 mr-12" width="44" height="44" fill="currentColor"></i><span class="font-playful font-black whitespace-nowrap drop-shadow-lg text-7xl md:text-[8rem] text-white tracking-tight">Cinnamon Sugar</span></div>
+                        <div class="flex items-center mx-12"><i data-lucide="star" class="text-white/80 mr-12" width="44" height="44" fill="currentColor"></i><span class="font-playful font-black whitespace-nowrap drop-shadow-lg text-7xl md:text-[8rem] text-white tracking-tight">Chocolate Drizzle</span></div>
+                        <div class="flex items-center mx-12"><i data-lucide="star" class="text-white/80 mr-12" width="44" height="44" fill="currentColor"></i><span class="font-playful font-black whitespace-nowrap drop-shadow-lg text-7xl md:text-[8rem] text-white tracking-tight">Birthday Cake</span></div>
+                        <div class="flex items-center mx-12"><i data-lucide="star" class="text-white/80 mr-12" width="44" height="44" fill="currentColor"></i><span class="font-playful font-black whitespace-nowrap drop-shadow-lg text-7xl md:text-[8rem] text-white tracking-tight">Powdered Sugar</span></div>
+                    </div>
+                </div>
+                
+                <!-- Bottom Marquee (Reverse) -->
+                <div class="flex overflow-x-hidden bg-[#e91374]/90 py-5 border-b border-white/30 backdrop-blur-md">
+                    <div class="animate-marquee-reverse whitespace-nowrap flex items-center">
+                        <div class="flex items-center mx-12"><i data-lucide="heart" class="text-white/70 mr-8" width="28" height="28" fill="currentColor"></i><span class="font-playful font-black whitespace-nowrap drop-shadow-md text-4xl md:text-[3rem] text-white tracking-wide uppercase">Made to Order</span></div>
+                        <div class="flex items-center mx-12"><i data-lucide="heart" class="text-white/70 mr-8" width="28" height="28" fill="currentColor"></i><span class="font-playful font-black whitespace-nowrap drop-shadow-md text-4xl md:text-[3rem] text-white tracking-wide uppercase">Served Hot</span></div>
+                        <div class="flex items-center mx-12"><i data-lucide="heart" class="text-white/70 mr-8" width="28" height="28" fill="currentColor"></i><span class="font-playful font-black whitespace-nowrap drop-shadow-md text-4xl md:text-[3rem] text-white tracking-wide uppercase">Always Fresh</span></div>
+                        <div class="flex items-center mx-12"><i data-lucide="heart" class="text-white/70 mr-8" width="28" height="28" fill="currentColor"></i><span class="font-playful font-black whitespace-nowrap drop-shadow-md text-4xl md:text-[3rem] text-white tracking-wide uppercase">Bite Sized</span></div>
+                        <!-- Duplicates -->
+                        <div class="flex items-center mx-12"><i data-lucide="heart" class="text-white/70 mr-8" width="28" height="28" fill="currentColor"></i><span class="font-playful font-black whitespace-nowrap drop-shadow-md text-4xl md:text-[3rem] text-white tracking-wide uppercase">Made to Order</span></div>
+                        <div class="flex items-center mx-12"><i data-lucide="heart" class="text-white/70 mr-8" width="28" height="28" fill="currentColor"></i><span class="font-playful font-black whitespace-nowrap drop-shadow-md text-4xl md:text-[3rem] text-white tracking-wide uppercase">Served Hot</span></div>
+                        <div class="flex items-center mx-12"><i data-lucide="heart" class="text-white/70 mr-8" width="28" height="28" fill="currentColor"></i><span class="font-playful font-black whitespace-nowrap drop-shadow-md text-4xl md:text-[3rem] text-white tracking-wide uppercase">Always Fresh</span></div>
+                        <div class="flex items-center mx-12"><i data-lucide="heart" class="text-white/70 mr-8" width="28" height="28" fill="currentColor"></i><span class="font-playful font-black whitespace-nowrap drop-shadow-md text-4xl md:text-[3rem] text-white tracking-wide uppercase">Bite Sized</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-16 text-center relative z-10 reveal reveal-delay-200">
+                <button class="open-menu-btn magnetic-button group relative inline-flex items-center justify-center font-playful text-[1.75rem] font-black text-[#3fb7e9] bg-white px-14 py-6 rounded-full overflow-hidden transition-all shadow-[0_15px_30px_rgba(0,0,0,0.15)] hover:shadow-[0_8px_15px_rgba(0,0,0,0.15)] border-2 border-transparent hover:border-white">
+                    <span class="relative z-10 flex items-center gap-3">View Full Menu <i data-lucide="chevron-right" class="group-hover:translate-x-2 transition-transform duration-300" stroke-width="4" aria-hidden="true"></i></span>
+                    <div class="absolute inset-0 bg-[#f0f9fd] translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out"></div>
+                </button>
+            </div>
+        </section>
+
+        <!-- --- SECTION 5: TACTILE SOCIAL PROOF --- -->
+        <section class="w-full bg-[#fffafb] py-16 lg:py-24 min-h-screen flex items-center px-6 relative overflow-hidden">
+            <div class="absolute -right-20 top-20 text-[#fbcfe8]/20 transform rotate-[15deg] pointer-events-none mix-blend-multiply animate-float-slow" aria-hidden="true">
+                <i data-lucide="heart" width="400" height="400" fill="currentColor"></i>
+            </div>
+
+            <div class="max-w-7xl mx-auto w-full relative z-10">
+                <div class="flex flex-col md:flex-row justify-between items-end mb-16 md:mb-24 gap-10 reveal">
+                    <div class="text-left relative">
+                        <span class="absolute -top-12 left-0 font-handwritten text-[#3fb7e9] text-[3rem] -rotate-6">
+                            See you there!
+                        </span>
+                        <h2 class="text-[4.5rem] md:text-7xl font-playful font-black text-slate-800 mb-8 tracking-tight">
+                            Catch Us Around
+                        </h2>
+                        <p class="text-[1.35rem] text-slate-500 font-bold flex items-center gap-4 bg-white inline-flex px-8 py-4 rounded-full border border-slate-100 shadow-sm">
+                            <i data-lucide="map-pin" width="28" height="28" class="text-[#e91374]" aria-hidden="true"></i>
+                            LA • Orange • Riverside • San Bernardino
+                        </p>
+                    </div>
+                    <a href="https://instagram.com/theminidoughnutco" target="_blank" rel="noopener noreferrer" class="magnetic-button group flex items-center gap-4 bg-slate-800 text-white px-10 py-5 rounded-full font-bold text-xl hover:bg-[#e91374] transition-all duration-300 shadow-[0_10px_25px_rgba(30,41,59,0.2)] hover:shadow-[0_15px_35px_rgba(233,19,116,0.3)]">
+                        <i data-lucide="instagram" width="28" height="28" class="group-hover:scale-110 transition-transform duration-300" aria-hidden="true"></i> Follow @theminidoughnutco
+                    </a>
+                </div>
+
+                <!-- Authentic Scattered Polaroids Grid -->
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-10 md:gap-16">
+                    <!-- Polaroid 1 -->
+                    <a href="https://instagram.com/theminidoughnutco" target="_blank" rel="noopener noreferrer" class="block relative aspect-square bg-white p-5 pb-20 rounded-sm shadow-[0_20px_40px_rgba(0,0,0,0.08)] transform rotate-2 mt-0 hover:rotate-0 hover:scale-[1.12] hover:z-30 transition-all duration-500 ease-out cursor-pointer group/post reveal-zoom reveal-delay-100">
+                        <div class="absolute -top-4 left-1/2 -translate-x-1/2 w-28 h-9 washi-tape-pattern transform -rotate-2 shadow-sm backdrop-blur-sm z-10 transition-opacity duration-300 pointer-events-none"></div>
+                        <div class="relative w-full h-full rounded-[2px] overflow-hidden border border-slate-100">
+                            <img src="https://images.unsplash.com/photo-1527515637462-cff94eecc1ac?auto=format&fit=crop&q=80&w=600" alt="Instagram feed showing mini doughnuts in a pink box" class="w-full h-full object-cover filter contrast-[1.05] sepia-[10%]" loading="lazy" decoding="async"/>
+                            <div class="absolute inset-0 bg-black/50 opacity-0 group-hover/post:opacity-100 transition-opacity duration-400 flex items-center justify-center gap-8 text-white font-bold text-xl backdrop-blur-[2px]">
+                                <div class="flex items-center gap-2"><i data-lucide="heart" fill="currentColor" width="28" height="28"></i> 1.2k</div>
+                                <div class="flex items-center gap-2"><i data-lucide="message-circle" fill="currentColor" width="28" height="28"></i> 48</div>
+                            </div>
+                        </div>
+                        <div class="absolute bottom-6 left-0 w-full text-center font-handwritten text-slate-400 text-3xl opacity-80">#minidoughnuts</div>
+                    </a>
+                    <!-- Polaroid 2 -->
+                    <a href="https://instagram.com/theminidoughnutco" target="_blank" rel="noopener noreferrer" class="block relative aspect-square bg-white p-5 pb-20 rounded-sm shadow-[0_20px_40px_rgba(0,0,0,0.08)] transform -rotate-3 mt-12 hover:rotate-0 hover:scale-[1.12] hover:z-30 transition-all duration-500 ease-out cursor-pointer group/post reveal-zoom reveal-delay-200">
+                        <div class="absolute -top-4 left-1/2 -translate-x-1/2 w-28 h-9 washi-tape-pattern transform rotate-1 shadow-sm backdrop-blur-sm z-10 transition-opacity duration-300 pointer-events-none"></div>
+                        <div class="relative w-full h-full rounded-[2px] overflow-hidden border border-slate-100">
+                            <img src="https://images.unsplash.com/photo-1551024601-bec78aea704b?auto=format&fit=crop&q=80&w=600" alt="Instagram feed of a freshly glazed doughnut" class="w-full h-full object-cover filter contrast-[1.05] sepia-[10%]" loading="lazy" decoding="async"/>
+                            <div class="absolute inset-0 bg-black/50 opacity-0 group-hover/post:opacity-100 transition-opacity duration-400 flex items-center justify-center gap-8 text-white font-bold text-xl backdrop-blur-[2px]">
+                                <div class="flex items-center gap-2"><i data-lucide="heart" fill="currentColor" width="28" height="28"></i> 856</div>
+                                <div class="flex items-center gap-2"><i data-lucide="message-circle" fill="currentColor" width="28" height="28"></i> 21</div>
+                            </div>
+                        </div>
+                        <div class="absolute bottom-6 left-0 w-full text-center font-handwritten text-slate-400 text-3xl opacity-80">#partytime</div>
+                    </a>
+                    <!-- Polaroid 3 -->
+                    <a href="https://instagram.com/theminidoughnutco" target="_blank" rel="noopener noreferrer" class="block relative aspect-square bg-white p-5 pb-20 rounded-sm shadow-[0_20px_40px_rgba(0,0,0,0.08)] transform rotate-4 mt-4 hover:rotate-0 hover:scale-[1.12] hover:z-30 transition-all duration-500 ease-out cursor-pointer group/post reveal-zoom reveal-delay-300">
+                        <div class="absolute -top-4 left-1/2 -translate-x-1/2 w-28 h-9 washi-tape-pattern transform -rotate-3 shadow-sm backdrop-blur-sm z-10 transition-opacity duration-300 pointer-events-none"></div>
+                        <div class="relative w-full h-full rounded-[2px] overflow-hidden border border-slate-100">
+                            <img src="https://images.unsplash.com/photo-1518485295191-1c5c4f220a2e?auto=format&fit=crop&q=80&w=600" alt="Doughnut platter at an event" class="w-full h-full object-cover filter contrast-[1.05] sepia-[10%]" loading="lazy" decoding="async"/>
+                            <div class="absolute inset-0 bg-black/50 opacity-0 group-hover/post:opacity-100 transition-opacity duration-400 flex items-center justify-center gap-8 text-white font-bold text-xl backdrop-blur-[2px]">
+                                <div class="flex items-center gap-2"><i data-lucide="heart" fill="currentColor" width="28" height="28"></i> 2.4k</div>
+                                <div class="flex items-center gap-2"><i data-lucide="message-circle" fill="currentColor" width="28" height="28"></i> 112</div>
+                            </div>
+                        </div>
+                        <div class="absolute bottom-6 left-0 w-full text-center font-handwritten text-slate-400 text-3xl opacity-80">#sweettooth</div>
+                    </a>
+                    <!-- Polaroid 4 -->
+                    <a href="https://instagram.com/theminidoughnutco" target="_blank" rel="noopener noreferrer" class="block relative aspect-square bg-white p-5 pb-20 rounded-sm shadow-[0_20px_40px_rgba(0,0,0,0.08)] transform -rotate-2 mt-8 hover:rotate-0 hover:scale-[1.12] hover:z-30 transition-all duration-500 ease-out cursor-pointer group/post reveal-zoom reveal-delay-200">
+                        <div class="absolute -top-4 left-1/2 -translate-x-1/2 w-28 h-9 washi-tape-pattern transform rotate-2 shadow-sm backdrop-blur-sm z-10 transition-opacity duration-300 pointer-events-none"></div>
+                        <div class="relative w-full h-full rounded-[2px] overflow-hidden border border-slate-100">
+                            <img src="https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?auto=format&fit=crop&q=80&w=600" alt="Mini doughnuts sprinkled with sugar" class="w-full h-full object-cover filter contrast-[1.05] sepia-[10%]" loading="lazy" decoding="async"/>
+                            <div class="absolute inset-0 bg-black/50 opacity-0 group-hover/post:opacity-100 transition-opacity duration-400 flex items-center justify-center gap-8 text-white font-bold text-xl backdrop-blur-[2px]">
+                                <div class="flex items-center gap-2"><i data-lucide="heart" fill="currentColor" width="28" height="28"></i> 943</div>
+                                <div class="flex items-center gap-2"><i data-lucide="message-circle" fill="currentColor" width="28" height="28"></i> 34</div>
+                            </div>
+                        </div>
+                        <div class="absolute bottom-6 left-0 w-full text-center font-handwritten text-slate-400 text-3xl opacity-80">#minidoughnuts</div>
+                    </a>
+                    <!-- Polaroid 5 -->
+                    <a href="https://instagram.com/theminidoughnutco" target="_blank" rel="noopener noreferrer" class="block relative aspect-square bg-white p-5 pb-20 rounded-sm shadow-[0_20px_40px_rgba(0,0,0,0.08)] transform rotate-3 mt-0 hover:rotate-0 hover:scale-[1.12] hover:z-30 transition-all duration-500 ease-out cursor-pointer group/post reveal-zoom reveal-delay-300">
+                        <div class="absolute -top-4 left-1/2 -translate-x-1/2 w-28 h-9 washi-tape-pattern transform -rotate-1 shadow-sm backdrop-blur-sm z-10 transition-opacity duration-300 pointer-events-none"></div>
+                        <div class="relative w-full h-full rounded-[2px] overflow-hidden border border-slate-100">
+                            <img src="https://images.unsplash.com/photo-1534080564583-6be75777b70a?auto=format&fit=crop&q=80&w=600" alt="Event setup with catering cart" class="w-full h-full object-cover filter contrast-[1.05] sepia-[10%]" loading="lazy" decoding="async"/>
+                            <div class="absolute inset-0 bg-black/50 opacity-0 group-hover/post:opacity-100 transition-opacity duration-400 flex items-center justify-center gap-8 text-white font-bold text-xl backdrop-blur-[2px]">
+                                <div class="flex items-center gap-2"><i data-lucide="heart" fill="currentColor" width="28" height="28"></i> 1.8k</div>
+                                <div class="flex items-center gap-2"><i data-lucide="message-circle" fill="currentColor" width="28" height="28"></i> 76</div>
+                            </div>
+                        </div>
+                        <div class="absolute bottom-6 left-0 w-full text-center font-handwritten text-slate-400 text-3xl opacity-80">#catering</div>
+                    </a>
+                    <!-- Polaroid 6 -->
+                    <a href="https://instagram.com/theminidoughnutco" target="_blank" rel="noopener noreferrer" class="block relative aspect-square bg-white p-5 pb-20 rounded-sm shadow-[0_20px_40px_rgba(0,0,0,0.08)] transform -rotate-5 mt-16 hover:rotate-0 hover:scale-[1.12] hover:z-30 transition-all duration-500 ease-out cursor-pointer group/post reveal-zoom reveal-delay-400">
+                        <div class="absolute -top-4 left-1/2 -translate-x-1/2 w-28 h-9 washi-tape-pattern transform rotate-3 shadow-sm backdrop-blur-sm z-10 transition-opacity duration-300 pointer-events-none"></div>
+                        <div class="relative w-full h-full rounded-[2px] overflow-hidden border border-slate-100">
+                            <img src="https://images.unsplash.com/photo-1612240498936-65f5101365d2?auto=format&fit=crop&q=80&w=600" alt="Close up of chocolate drizzled doughnut" class="w-full h-full object-cover filter contrast-[1.05] sepia-[10%]" loading="lazy" decoding="async"/>
+                            <div class="absolute inset-0 bg-black/50 opacity-0 group-hover/post:opacity-100 transition-opacity duration-400 flex items-center justify-center gap-8 text-white font-bold text-xl backdrop-blur-[2px]">
+                                <div class="flex items-center gap-2"><i data-lucide="heart" fill="currentColor" width="28" height="28"></i> 3.1k</div>
+                                <div class="flex items-center gap-2"><i data-lucide="message-circle" fill="currentColor" width="28" height="28"></i> 145</div>
+                            </div>
+                        </div>
+                        <div class="absolute bottom-6 left-0 w-full text-center font-handwritten text-slate-400 text-3xl opacity-80">#love</div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- --- SECTION 6: NEO-BRUTALIST / POP-ART CTA --- -->
+        <section class="relative w-full bg-[#fffafb] py-16 lg:py-24 min-h-screen flex items-center px-6 overflow-hidden">
+            <!-- Giant abstract elegant doughnut shapes in bg -->
+            <svg class="absolute -top-20 -left-20 animate-spin-slow opacity-10 mix-blend-multiply" width="500" height="500" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <circle cx="50" cy="50" r="35" stroke="#e91374" stroke-width="25" stroke-dasharray="10 15" stroke-linecap="round" />
+                <circle cx="50" cy="50" r="14" fill="transparent" />
+            </svg>
+            <svg class="absolute -bottom-20 -right-20 animate-spin-slow opacity-10 mix-blend-multiply" width="600" height="600" viewBox="0 0 100 100" fill="none" style="transform: rotate(45deg);" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <circle cx="50" cy="50" r="35" stroke="#3fb7e9" stroke-width="30" stroke-dasharray="2 10" stroke-linecap="round" />
+                <circle cx="50" cy="50" r="14" fill="transparent" />
+            </svg>
+
+            <div class="max-w-5xl mx-auto w-full bg-[#e91374] rounded-[3rem] p-12 md:p-24 text-center shadow-[20px_20px_0_0_#3fb7e9] border-[10px] border-[#3fb7e9] relative transition-transform duration-700 ease-out hover:-translate-y-4 hover:shadow-[30px_30px_0_0_#3fb7e9] z-10 group/cta reveal-zoom">
+                <div class="absolute -top-10 -right-10 bg-[#fcefb4] text-[#e91374] font-handwritten text-5xl px-8 py-4 rounded-full transform rotate-12 border-4 border-white shadow-xl group-hover/cta:rotate-[20deg] group-hover/cta:scale-110 transition-all duration-500 ease-out sticker-shadow z-20">
+                    Let's party!
+                </div>
+
+                <div class="relative z-10">
+                    <h2 class="text-6xl md:text-[6rem] font-playful font-black text-white mb-8 tracking-tighter leading-[0.9]">
+                        Ready to Make Your Event Sweeter?
+                    </h2>
+                    <p class="text-[1.75rem] text-pink-100 mb-16 font-medium max-w-2xl mx-auto leading-snug drop-shadow-sm">
+                        Fresh mini doughnuts made live.
+                    </p>
+                    
+                    <button class="magnetic-button font-playful text-4xl px-16 py-8 bg-white text-[#e91374] rounded-full inline-flex items-center justify-center gap-4 w-full sm:w-auto mb-14 shadow-[0_15px_30px_rgba(0,0,0,0.2)] hover:shadow-[0_8px_15px_rgba(0,0,0,0.2)] hover:translate-y-[4px] active:shadow-none active:translate-y-[8px] transition-all relative group overflow-hidden border-2 border-[#fcefb4]">
+                        <span class="absolute inset-0 w-full h-full bg-[#fcefb4] translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out rounded-full"></span>
+                        <span class="relative z-10 flex items-center gap-3">Book Us Now <span aria-hidden="true">🍩</span></span>
+                    </button>
+                    
+                    <br/>
+                    <a href="mailto:info@theminidoughnutcompany.com" class="magnetic-button flex items-center justify-center gap-4 text-white hover:text-[#fcefb4] transition-colors font-bold text-[1.35rem] bg-black/40 hover:bg-black/60 inline-flex mx-auto px-10 py-5 rounded-full backdrop-blur-sm group border border-white/30 hover:border-white/60 shadow-lg">
+                        <i data-lucide="mail" width="28" height="28" class="group-hover:scale-110 transition-transform duration-300" aria-hidden="true"></i>
+                        info@theminidoughnutcompany.com
+                    </a>
+                </div>
+            </div>
+        </section>
     </main>
+    
+    <footer class="w-full bg-[#0f172a] py-6 flex items-center justify-center text-center text-slate-400 font-bold border-t-[8px] border-[#3fb7e9] relative z-20">
+        <p class="text-[1.35rem] tracking-wide font-handwritten text-[#fcefb4] drop-shadow-sm flex flex-col md:flex-row items-center gap-2 md:gap-4">
+            <span>Warning: Highly addictive!</span>
+            <span class="hidden md:inline text-slate-500 font-sans text-lg">•</span>
+            <span class="font-sans text-sm text-slate-500">© <span id="current-year"></span> The Mini Doughnut Company. Spreading Joy.</span>
+        </p>
+    </footer>
 
+    <!-- --- PREMIUM MENU POP-OUT MODAL --- -->
+    <div id="menu-modal" class="fixed inset-0 z-[1000] hidden items-center justify-center p-4 sm:p-6 md:p-12 animate-fade-in" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+        <div id="modal-overlay" class="absolute inset-0 bg-slate-900/50 backdrop-blur-md cursor-pointer transition-opacity" aria-hidden="true"></div>
+        <div class="relative w-full max-w-4xl max-h-[90vh] bg-[#fffafb] rounded-[3rem] shadow-[0_30px_80px_rgba(0,0,0,0.4)] border border-white overflow-hidden flex flex-col animate-slide-up">
+            
+            <!-- Header -->
+            <div class="flex justify-between items-center p-8 md:p-10 border-b border-pink-100/50 bg-white/80 backdrop-blur-md">
+                <h2 id="modal-title" class="text-4xl md:text-[3rem] font-playful font-black text-[#e91374] tracking-tight">Our Full Menu</h2>
+                <button id="close-menu-btn" class="p-4 bg-slate-50 hover:bg-pink-50 rounded-full transition-colors text-slate-400 hover:text-[#e91374] shadow-sm border border-slate-100 group" aria-label="Close menu">
+                    <i data-lucide="x" width="28" height="28" class="group-hover:scale-110 transition-transform" aria-hidden="true"></i>
+                </button>
+            </div>
+
+            <!-- Content -->
+            <div class="p-8 md:p-10 overflow-y-auto custom-scrollbar relative bg-[#fffafb]">
+                <div class="grid md:grid-cols-2 gap-16">
+                    
+                    <!-- Category 1 -->
+                    <div>
+                        <h3 class="text-[2rem] font-playful font-black text-[#3fb7e9] mb-8 flex items-center gap-3">
+                            <i data-lucide="star" class="text-[#fcefb4]" fill="currentColor" width="32" height="32" aria-hidden="true"></i> The Classics
+                        </h3>
+                        <div class="space-y-8">
+                            <div class="group cursor-default">
+                                <div class="flex justify-between items-baseline mb-2">
+                                    <h4 class="text-[1.35rem] font-black text-slate-800 group-hover:text-[#e91374] transition-colors">Cinnamon Sugar</h4>
+                                    <span class="text-sm font-bold text-slate-300 border-b-2 border-slate-200 border-dotted flex-grow mx-4 relative top-[-6px]" aria-hidden="true"></span>
+                                </div>
+                                <p class="text-slate-500 font-medium text-lg leading-snug pr-8">Warm mini doughnuts tossed in our signature cinnamon sugar blend.</p>
+                            </div>
+                            <div class="group cursor-default">
+                                <div class="flex justify-between items-baseline mb-2">
+                                    <h4 class="text-[1.35rem] font-black text-slate-800 group-hover:text-[#e91374] transition-colors">Powdered Sugar</h4>
+                                    <span class="text-sm font-bold text-slate-300 border-b-2 border-slate-200 border-dotted flex-grow mx-4 relative top-[-6px]" aria-hidden="true"></span>
+                                </div>
+                                <p class="text-slate-500 font-medium text-lg leading-snug pr-8">A generous dusting of sweet confectioner's sugar.</p>
+                            </div>
+                            <div class="group cursor-default">
+                                <div class="flex justify-between items-baseline mb-2">
+                                    <h4 class="text-[1.35rem] font-black text-slate-800 group-hover:text-[#e91374] transition-colors">Glazed</h4>
+                                    <span class="text-sm font-bold text-slate-300 border-b-2 border-slate-200 border-dotted flex-grow mx-4 relative top-[-6px]" aria-hidden="true"></span>
+                                </div>
+                                <p class="text-slate-500 font-medium text-lg leading-snug pr-8">Our secret vanilla glaze, dripping with sweetness.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Category 2 -->
+                    <div>
+                        <h3 class="text-[2rem] font-playful font-black text-[#f59e0b] mb-8 flex items-center gap-3">
+                            <i data-lucide="sparkles" class="text-[#f59e0b]" width="32" height="32" aria-hidden="true"></i> Premium
+                        </h3>
+                        <div class="space-y-8">
+                            <div class="group cursor-default">
+                                <div class="flex justify-between items-baseline mb-2">
+                                    <h4 class="text-[1.35rem] font-black text-slate-800 group-hover:text-[#e91374] transition-colors">Chocolate Drizzle</h4>
+                                    <span class="text-sm font-bold text-slate-300 border-b-2 border-slate-200 border-dotted flex-grow mx-4 relative top-[-6px]" aria-hidden="true"></span>
+                                </div>
+                                <p class="text-slate-500 font-medium text-lg leading-snug pr-8">Rich, warm milk chocolate drizzled generously.</p>
+                            </div>
+                            <div class="group cursor-default">
+                                <div class="flex justify-between items-baseline mb-2">
+                                    <h4 class="text-[1.35rem] font-black text-slate-800 group-hover:text-[#e91374] transition-colors">Birthday Cake</h4>
+                                    <span class="text-sm font-bold text-slate-300 border-b-2 border-slate-200 border-dotted flex-grow mx-4 relative top-[-6px]" aria-hidden="true"></span>
+                                </div>
+                                <p class="text-slate-500 font-medium text-lg leading-snug pr-8">Vanilla glaze topped with rainbow sprinkles.</p>
+                            </div>
+                            <div class="group cursor-default">
+                                <div class="flex justify-between items-baseline mb-2">
+                                    <h4 class="text-[1.35rem] font-black text-slate-800 group-hover:text-[#e91374] transition-colors">Maple Bacon</h4>
+                                    <span class="text-sm font-bold text-slate-300 border-b-2 border-slate-200 border-dotted flex-grow mx-4 relative top-[-6px]" aria-hidden="true"></span>
+                                </div>
+                                <p class="text-slate-500 font-medium text-lg leading-snug pr-8">Sweet maple glaze with crispy, savory bacon bits.</p>
+                            </div>
+                            <div class="group cursor-default">
+                                <div class="flex justify-between items-baseline mb-2">
+                                    <h4 class="text-[1.35rem] font-black text-slate-800 group-hover:text-[#e91374] transition-colors">Oreo Crumble</h4>
+                                    <span class="text-sm font-bold text-slate-300 border-b-2 border-slate-200 border-dotted flex-grow mx-4 relative top-[-6px]" aria-hidden="true"></span>
+                                </div>
+                                <p class="text-slate-500 font-medium text-lg leading-snug pr-8">Vanilla glaze smothered in crushed Oreo cookies.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                
+                <div class="mt-16 p-10 bg-gradient-to-r from-[#fdf2f6] to-[#fff5f8] rounded-[2rem] text-center border-2 border-dashed border-[#fbcfe8] shadow-inner">
+                    <p class="font-handwritten text-5xl text-[#e91374] mb-3">Want to customize?</p>
+                    <p class="text-[1.15rem] font-medium text-slate-600">We can create custom colors and flavors to perfectly match your event theme!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN JAVASCRIPT LOGIC -->
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            initBackgroundSprinkles();
-            initFloatingDoughnuts();
+        // 1. Initialize Lucide Icons
+        lucide.createIcons();
 
-            if ('fonts' in document) {
-                document.fonts.ready.then(() => {
-                    revealContent();
-                }).catch(() => {
-                    revealContent();
-                });
-            } else {
-                setTimeout(revealContent, 500);
+        // Set Current Year
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        // Reveal Animations on Scroll (Intersection Observer)
+        const revealOptions = { root: null, rootMargin: '0px', threshold: 0.15 };
+        const revealObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, revealOptions);
+
+        document.querySelectorAll('.reveal, .reveal-zoom').forEach(el => revealObserver.observe(el));
+
+        // 2. Elegant Sprinkles Background Generator
+        const generateSprinkles = () => {
+            const colors = ['#e91374', '#3fb7e9', '#f59e0b', '#10b981', '#fcefb4'];
+            const container = document.getElementById('sprinkles-container');
+            let sprinklesHTML = '';
+            for (let i = 0; i < 35; i++) {
+                const left = (Math.random() * 100).toFixed(2) + '%';
+                const top = -20 - (Math.random() * 80); // Start randomly off-screen above
+                const rot = (Math.random() * 360).toFixed(2);
+                const color = colors[Math.floor(Math.random() * colors.length)];
+                const delay = (Math.random() * 10).toFixed(2);
+                const duration = (12 + Math.random() * 18).toFixed(2); // Smooth continuous fall
+                
+                sprinklesHTML += `<div class="absolute w-1.5 h-4 rounded-full shadow-sm" style="left: ${left}; top: ${top}%; background-color: ${color}; transform: rotate(${rot}deg); animation: fall ${duration}s linear ${delay}s infinite;"></div>`;
             }
+            container.innerHTML = sprinklesHTML;
+        };
+        generateSprinkles();
 
-            initSugarTrail();
-            initSteamPhysics();
-        });
-
-        function revealContent() {
-            const main = document.getElementById('main-content');
-            main.style.opacity = '1';
-            document.body.classList.add('ready');
-        }
-
-        function initSteamPhysics() {
-            const canvas = document.getElementById('steam-canvas');
-            const ctx = canvas.getContext('2d');
-            let particles = [];
-            let mouseX = 0; let mouseY = 0;
-
-            document.addEventListener('mousemove', (e) => {
-                const rect = canvas.getBoundingClientRect();
-                mouseX = e.clientX - rect.left;
-                mouseY = e.clientY - rect.top;
+        // 3. Buttery Smooth Magnetic Button Physics
+        const magneticButtons = document.querySelectorAll('.magnetic-button');
+        magneticButtons.forEach(btn => {
+            btn.style.transition = 'transform 0.15s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s, background-color 0.3s, color 0.3s';
+            
+            btn.addEventListener('mousemove', (e) => {
+                const rect = btn.getBoundingClientRect();
+                const x = (e.clientX - (rect.left + rect.width / 2)) * 0.12; 
+                const y = (e.clientY - (rect.top + rect.height / 2)) * 0.12;
+                btn.style.transform = `translate3d(${x}px, ${y}px, 0)`;
             });
 
-            class Particle {
-                constructor() {
-                    this.x = canvas.width / 2 + (Math.random() - 0.5) * 120;
-                    this.y = canvas.height - 20; 
-                    this.vx = (Math.random() - 0.5) * 0.5;
-                    this.vy = -(Math.random() * 1.5 + 1);
-                    this.size = Math.random() * 15 + 8;
-                    this.life = 100;
-                    this.decay = Math.random() * 0.7 + 0.3;
-                }
-                update() {
-                    this.y += this.vy;
-                    this.x += this.vx;
-                    this.life -= this.decay;
-                    this.size += 0.12;
-                    const dx = this.x - mouseX;
-                    const dy = this.y - mouseY;
-                    const dist = Math.sqrt(dx*dx + dy*dy);
-                    if (dist < 120) {
-                        const force = (120 - dist) / 120;
-                        this.vx += (dx / dist) * force * 0.6;
-                    }
-                }
-                draw() {
-                    ctx.beginPath();
-                    const gradient = ctx.createRadialGradient(
-                        this.x, this.y, 0, this.x, this.y, this.size
-                    );
-                    gradient.addColorStop(0, `rgba(255, 255, 255, ${this.life / 100 * 0.45})`);
-                    gradient.addColorStop(1, 'rgba(255, 255, 255, 0)');
-                    ctx.fillStyle = gradient;
-                    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                    ctx.fill();
-                }
+            btn.addEventListener('mouseleave', () => {
+                btn.style.transform = 'translate3d(0, 0, 0)';
+            });
+        });
+
+        // 4. Fluid Parallax Tracking (Hero Section)
+        const parallaxElements = document.querySelectorAll('.parallax');
+        let requestRef;
+        let mouse = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
+        let current = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
+
+        window.addEventListener('mousemove', (e) => {
+            mouse.x = e.clientX;
+            mouse.y = e.clientY;
+        });
+
+        // Use requestAnimationFrame for buttery smooth parallax
+        const smoothParallax = () => {
+            current.x += (mouse.x - current.x) * 0.05; // Lerp factor for smoothness
+            current.y += (mouse.y - current.y) * 0.05;
+
+            const centerX = window.innerWidth / 2;
+            const centerY = window.innerHeight / 2;
+
+            parallaxElements.forEach(el => {
+                const factor = parseFloat(el.getAttribute('data-factor'));
+                const translateX = (current.x - centerX) * factor;
+                const translateY = (current.y - centerY) * factor;
+                el.style.transform = `translate(${translateX}px, ${translateY}px)`;
+            });
+
+            requestRef = requestAnimationFrame(smoothParallax);
+        };
+        requestRef = requestAnimationFrame(smoothParallax);
+
+        // 5. Menu Modal Toggle Logic
+        const modal = document.getElementById('menu-modal');
+        const openBtns = document.querySelectorAll('.open-menu-btn');
+        const closeBtn = document.getElementById('close-menu-btn');
+        const modalOverlay = document.getElementById('modal-overlay');
+
+        const openModal = () => {
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            document.body.style.overflow = 'hidden'; 
+            closeBtn.focus();
+        };
+
+        const closeModal = () => {
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+            document.body.style.overflow = '';
+        };
+
+        openBtns.forEach(btn => btn.addEventListener('click', openModal));
+        closeBtn.addEventListener('click', closeModal);
+        modalOverlay.addEventListener('click', closeModal);
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+                closeModal();
             }
-            function animate() {
-                ctx.clearRect(0, 0, canvas.width, canvas.height);
-                if (Math.random() < 0.25) { particles.push(new Particle()); }
-                for (let i = 0; i < particles.length; i++) {
-                    particles[i].update();
-                    particles[i].draw();
-                    if (particles[i].life <= 0) {
-                        particles.splice(i, 1);
-                        i--;
-                    }
-                }
-                requestAnimationFrame(animate);
-            }
-            animate();
-        }
+        });
 
-        function initBackgroundSprinkles() {
-            const container = document.getElementById('sprinkle-bg');
-            const colors = ['#FFEB3B', '#FF4081', '#FFFFFF', '#00E676', '#BA68C8'];
-            const count = 30; 
-
-            for (let i = 0; i < count; i++) {
-                const el = document.createElement('div');
-                el.classList.add('bg-sprinkle');
-                const bg = colors[Math.floor(Math.random() * colors.length)];
-                const left = Math.random() * 100;
-                const duration = Math.random() * 10 + 10;
-                const delay = Math.random() * -20;
-                const scale = Math.random() * 0.5 + 0.5;
-                const blur = Math.random() * 2;
-
-                el.style.backgroundColor = bg;
-                el.style.left = `${left}%`;
-                el.style.animationDuration = `${duration}s`;
-                el.style.animationDelay = `${delay}s`;
-                el.style.transform = `scale(${scale})`;
-                el.style.filter = `blur(${blur}px)`;
-                container.appendChild(el);
-            }
-        }
-
-        function initFloatingDoughnuts() {
-            const container = document.getElementById('doughnut-bg');
-            const count = 10; 
-
-            for (let i = 0; i < count; i++) {
-                const img = document.createElement('img');
-                img.src = "images/doughnut-emoji.png";
-                img.alt = "";
-                img.classList.add('bg-doughnut');
-
-                const left = Math.random() * 100;
-                const duration = Math.random() * 15 + 20; 
-                const delay = Math.random() * -35; 
-                const scale = Math.random() * 0.6 + 0.6; 
-                const baseSize = 75; 
-
-                img.style.left = `${left}%`;
-                img.style.animationDuration = `${duration}s`;
-                img.style.animationDelay = `${delay}s`;
-                img.style.width = `${baseSize * scale}px`;
-                img.style.height = `${baseSize * scale}px`;
-
-                container.appendChild(img);
-            }
-        }
-
-        function initSugarTrail() {
-            let throttle = 0;
-            const spawnSugar = (x, y) => {
-                throttle++;
-                if (throttle % 4 !== 0) return; 
-                const particle = document.createElement('div');
-                particle.classList.add('sugar-particle');
-                const offsetX = x + (Math.random() - 0.5) * 20;
-                const offsetY = y + (Math.random() - 0.5) * 20;
-                particle.style.left = `${offsetX}px`; 
-                particle.style.top = `${offsetY}px`;
-                document.body.appendChild(particle);
-                setTimeout(() => particle.remove(), 1500);
-            };
-
-            document.addEventListener('mousemove', (e) => spawnSugar(e.clientX, e.clientY));
-            document.addEventListener('touchmove', (e) => {
-                const touch = e.touches[0];
-                spawnSugar(touch.clientX, touch.clientY);
-            }, { passive: true });
-        }
     </script>
 </body>
 </html>
